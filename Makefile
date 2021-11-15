@@ -15,6 +15,7 @@ NAME=fdf
 SYSTEM= lunix #linux or macos
 SRC=  	main.c \
 
+MINILIBX_PATH= /mlx_linux/
 
 OBJ_DIR=package/
 OBJ=$(SRC:.c=.o)
@@ -25,10 +26,10 @@ CC_FLAG = -Wall -Wextra -Werror
 $(OBJ_DIR)%.o:%.c src/fdf.h
 	@mkdir -p $(OBJ_DIR)/src
 	@echo "Compiling: $<"
-	@gcc $(CC_FLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
+	@gcc $(CC_FLAGS) -I/usr/include -I$(MINILIBX_PATH) -O3 -c $< -o $@
 
 $(NAME):$(OBJ_PREFX)
-	@gcc $(OBJ_PREFX) -Lmlx_linux -lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+	@gcc $(OBJ_PREFX) -L$(MINILIBX_PATH) -l$(MINILIBX_PATH) -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 	@echo "make done !"
 
 
