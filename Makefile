@@ -15,7 +15,7 @@ NAME=fdf
 SYSTEM= lunix #linux or macos
 SRC=  	main.c \
 
-MINILIBX_PATH= /mlx_linux/
+MINILIBX_PATH= mlx_linux
 
 OBJ_DIR=package/
 OBJ=$(SRC:.c=.o)
