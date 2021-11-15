@@ -41,12 +41,6 @@ RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/
     -t robbyrussell \
     -p git 
 
-RUN git clone https://github.com/42Paris/minilibx-linux mlx_linux
-
-RUN	cd mlx_linux; ./configure && \
-	cp libmlx.a /usr/local/lib/ && \
-	cp mlx.h /usr/local/include/mlx.h
-
 
 WORKDIR /app
 
