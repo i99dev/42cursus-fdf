@@ -13,7 +13,8 @@
 
 NAME=fdf
 SYSTEM= lunix #linux or macos
-SRC=  	main.c 		\
+SRC=  	main.c \
+
 
 OBJ_DIR=package/
 OBJ=$(SRC:.c=.o)
@@ -24,10 +25,10 @@ CC_FLAG = -Wall -Wextra -Werror
 $(OBJ_DIR)%.o:%.c src/fdf.h
 	@mkdir -p $(OBJ_DIR)/src
 	@echo "Compiling: $<"
-	@gcc $(CC_FLAGS) -I/usr/local/include -Imlx_linux -O3 -c $< -o $@
+	@gcc $(CC_FLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
 
 $(NAME):$(OBJ_PREFX)
-	@gcc -L/mlx_linux -lmlx -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME) $(OBJ_PREFX)
+	@gcc $(OBJ_PREFX) -Lmlx_linux -lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 	@echo "make done !"
 
 

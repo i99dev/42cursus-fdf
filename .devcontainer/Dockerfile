@@ -1,7 +1,5 @@
 FROM    debian:latest
 
-RUN apt-get update --no-install-recommends -y
-
 RUN apt-get update \
  && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     'build-essential' \
@@ -33,7 +31,15 @@ RUN apt-get update \
     xorg    \
     && apt-get clean autoclean \
     && apt-get autoremove --yes \
-    && rm -rf /var/lib/{apt,dpkg,cache,log}/ 
+    && rm -rf /var/lib/{apt,dpkg,cache,log}/
+
+RUN python3 -m pip install --upgrade pip setuptools
+RUN python3 -m pip install norminette
+
+
+RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.2/zsh-in-docker.sh)" -- \
+    -t robbyrussell \
+    -p git 
 
 RUN git clone https://github.com/42Paris/minilibx-linux mlx_linux
 
@@ -45,8 +51,3 @@ RUN	cd mlx_linux; ./configure && \
 WORKDIR /app
 
 COPY ../ .
-
-
-
-RUN python3 -m pip install --upgrade pip setuptools
-RUN python3 -m pip install norminette
