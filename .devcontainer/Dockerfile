@@ -1,8 +1,9 @@
-FROM	ubuntu:latest
+FROM    debian:latest
 
 RUN apt-get update --no-install-recommends -y
 
-RUN apt-get install --no-install-recommends \
+RUN apt-get update \
+ && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     'build-essential' \
     "valgrind" \
     "gdb" \
@@ -25,30 +26,27 @@ RUN apt-get install --no-install-recommends \
     'wget' \
     'clang' \
     'nano'  \
-    'xorg'  \
-    'libxext-dev'   \
     'zlib1g-dev'    \
-    'systemd'   \
     'libxext-dev'   \
     'libx11-dev'    \
-    'libbsd-dev' -y \
+    'libbsd-dev' \
+    xorg    \
     && apt-get clean autoclean \
     && apt-get autoremove --yes \
     && rm -rf /var/lib/{apt,dpkg,cache,log}/ 
 
+RUN git clone https://github.com/42Paris/minilibx-linux mlx_linux
 
-
-RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.2/zsh-in-docker.sh)" -- \
-    -t robbyrussell \
-    -p git 
-# clone minilibx libery to your docker 
-RUN git clone https://github.com/42Paris/minilibx-linux mlx 
-
-# install and setup 
-RUN	cd mlx; ./configure && \
+RUN	cd mlx_linux; ./configure && \
 	cp libmlx.a /usr/local/lib/ && \
-	mkdir -p /usr/local/include && \
 	cp mlx.h /usr/local/include/mlx.h
+
+
+WORKDIR /app
+
+COPY ../ .
+
+
 
 RUN python3 -m pip install --upgrade pip setuptools
 RUN python3 -m pip install norminette

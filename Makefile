@@ -27,7 +27,7 @@ $(OBJ_DIR)%.o:%.c src/fdf.h
 	@gcc $(CC_FLAGS) -I/usr/local/include -Imlx_linux -O3 -c $< -o $@
 
 $(NAME):$(OBJ_PREFX)
-	@gcc -Lmlx_linux -lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME) $(OBJ_PREFX)
+	@gcc -L/mlx_linux -lmlx -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME) $(OBJ_PREFX)
 	@echo "make done !"
 
 
