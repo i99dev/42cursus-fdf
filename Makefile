@@ -12,8 +12,9 @@
 
 
 NAME=fdf
-SYSTEM= lunix #linux or macos
-SRC=  	main.c \
+
+
+SRC=  	src/main.c
 
 MINILIBX_PATH= mlx_linux
 

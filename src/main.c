@@ -6,11 +6,11 @@
 /*   By: oal-tena <oal-tena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 14:05:40 by oal-tena          #+#    #+#             */
-/*   Updated: 2021/11/15 14:16:33 by oal-tena         ###   ########.fr       */
+/*   Updated: 2021/11/16 02:10:16 by oal-tena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./src/fdf.h"
+#include "fdf.h"
 
 int	main(void)
 {
