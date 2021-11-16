@@ -12,7 +12,7 @@
 
 
 NAME=fdf
-
+SYSTEM=linux #
 
 SRC=  	src/main.c
 
@@ -23,14 +23,17 @@ OBJ=$(SRC:.c=.o)
 OBJ_PREFX=$(addprefix $(OBJ_DIR),$(OBJ))
 
 CC_FLAG = -Wall -Wextra -Werror
+CC=gcc
+
+
 
 $(OBJ_DIR)%.o:%.c src/fdf.h
 	@mkdir -p $(OBJ_DIR)/src
 	@echo "Compiling: $<"
-	@gcc $(CC_FLAGS) -I/usr/include -Imlx -O3 -c $< -o $@
+	@gcc $(CC_FLAGS) -I/usr/include -I$(MINILIBX_PATH) -O3 -c $< -o $@
 
 $(NAME):$(OBJ_PREFX)
-	@gcc -L$(MINILIBX_PATH) -lmlx -framework OpenGL -framework AppKit $(OBJ_PREFX) -o $(NAME)
+	@gcc $(OBJ_PREFX) -L$(MINILIBX_PATH) -l$(MINILIBX_PATH) -L/usr/lib -I$(MINILIBX_PATH) -lXext -lX11 -lm -lz -o $(NAME)
 	@echo "make done !"
 
 

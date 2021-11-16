@@ -14,8 +14,20 @@
 
 int	hook_example(int key_code, t_vars *vars)
 {
-	mlx_pixel_put(vars->mlx_ptr, vars->win_ptr, 100, 50, 14525265);
-	mlx_pixel_put(vars->mlx_ptr, vars->win_ptr, 105, 150, 14525265);
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < 350)
+	{
+		j = 0;
+		while (j < 250)
+		{
+			mlx_pixel_put(vars->mlx_ptr, vars->win_ptr, i, j, 14525265);
+			j++;
+		}
+		i++;
+	}
 	return (0);
 }
 
