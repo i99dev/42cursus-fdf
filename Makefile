@@ -27,7 +27,8 @@ CC_FLAG = -Wall -Wextra -Werror
 CC=gcc
 
 
-
+# for linux system uncomment the following line
+# ################################################################
 $(OBJ_DIR)%.o:%.c src/fdf.h
 	@mkdir -p $(OBJ_DIR)/src
 	@mkdir -p $(OBJ_DIR)/tools
@@ -37,6 +38,19 @@ $(OBJ_DIR)%.o:%.c src/fdf.h
 $(NAME):$(OBJ_PREFX)
 	@gcc $(OBJ_PREFX) -L$(MINILIBX_PATH) -l$(MINILIBX_PATH) -L/usr/lib -I$(MINILIBX_PATH) -lXext -lX11 -lm -lz -o $(NAME)
 	@echo "make done !"
+
+
+# for mac system uncomment the following line
+# ################################################################
+# $(OBJ_DIR)%.o:%.c src/fdf.h
+# 	@mkdir -p $(OBJ_DIR)/src
+# 	@mkdir -p $(OBJ_DIR)/tools
+# 	@echo "Compiling: $<"
+# 	@gcc $(CC_FLAGS) -I/usr/include -I$(MINILIBX_PATH) -c $< -o $@
+
+# $(NAME):$(OBJ_PREFX)
+# 	@gcc $(OBJ_PREFX) -L$(MINILIBX_PATH) -l$(MINILIBX_PATH) -framework OpenGL -framework AppKit -o $(NAME)
+# 	@echo "make done !"
 
 
 all: $(NAME)
