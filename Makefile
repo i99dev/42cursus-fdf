@@ -14,7 +14,8 @@
 NAME=fdf
 SYSTEM=linux #
 
-SRC=  	src/main.c
+SRC=  	src/main.c	\
+		tools/ft_colors.c
 
 MINILIBX_PATH=mlx_linux
 
@@ -29,6 +30,7 @@ CC=gcc
 
 $(OBJ_DIR)%.o:%.c src/fdf.h
 	@mkdir -p $(OBJ_DIR)/src
+	@mkdir -p $(OBJ_DIR)/tools
 	@echo "Compiling: $<"
 	@gcc $(CC_FLAGS) -I/usr/include -I$(MINILIBX_PATH) -O3 -c $< -o $@
 

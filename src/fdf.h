@@ -14,6 +14,7 @@
 # define FDF_H
 
 # include "mlx.h"
+# include "../tools/tools.h"
 # include <stdio.h>
 
 typedef struct vars
