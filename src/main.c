@@ -11,24 +11,16 @@
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include <stdlib.h>
 
-int	drwing_length(int key_code, t_vars *vars)
+int	mouse_hook(int key_code, t_vars *var)
 {
-	return (0);
-}
 
-int	add_shade(int key_code, t_vars *vars)
-{
-	int	color;
-	int	i;
-	int	g;
-
-	color = create_trgb(99, 99, 80, 80);
-	i = 0;
-	while (i < 500)
+	printf("%d\n", key_code);
+	printf("%d %d\n", &var->mouse.x, &var->mouse.y);
+	if (key_code == M_CLK_R)
 	{
-		mlx_pixel_put(vars->mlx_ptr, vars->win_ptr, i, 250, color);
-		i++;
+		mlx_pixel_put(var->mlx_ptr, var->win_ptr, 100, 50, 14525265);
 	}
 	return (0);
 }
@@ -39,7 +31,8 @@ int	main(void)
 
 	vars.mlx_ptr = mlx_init();
 	vars.win_ptr = mlx_new_window(vars.mlx_ptr, 640, 480, "Hello World!");
-	mlx_key_hook(vars.win_ptr, add_shade, &vars);
+	mlx_mouse_get_pos(vars.mlx_ptr, vars.win_ptr, &vars.mouse.x, &vars.mouse.y);
+	mlx_mouse_hook(vars.win_ptr, &mouse_hook, &vars);
 	mlx_loop(vars.mlx_ptr);
 	return (0);
 }
