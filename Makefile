@@ -19,6 +19,7 @@ SRC=  	src/main.c	\
 
 MINILIBX_PATH=mlx_linux
 
+LIB= ./mlx_linux/libmlx_linux.a
 OBJ_DIR=package/
 OBJ=$(SRC:.c=.o)
 OBJ_PREFX=$(addprefix $(OBJ_DIR),$(OBJ))

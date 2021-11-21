@@ -27,6 +27,9 @@
 # include "../tools/tools.h"
 # include <stdio.h>
 
+# define HIGH_SCREEN_WIDTH 640
+# define HIGH_SCREEN_HEIGHT 480
+
 typedef struct moues
 {
 	int		x;

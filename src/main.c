@@ -15,7 +15,6 @@
 
 int	mouse_hook(int key_code, t_vars *var)
 {
-
 	printf("%d\n", key_code);
 	printf("%d %d\n", &var->mouse.x, &var->mouse.y);
 	if (key_code == M_CLK_R)
@@ -30,8 +29,8 @@ int	main(void)
 	t_vars	vars;
 
 	vars.mlx_ptr = mlx_init();
-	vars.win_ptr = mlx_new_window(vars.mlx_ptr, 640, 480, "Hello World!");
-	mlx_mouse_get_pos(vars.mlx_ptr, vars.win_ptr, &vars.mouse.x, &vars.mouse.y);
+	vars.win_ptr = mlx_new_window(vars.mlx_ptr, HIGH_SCREEN_WIDTH,
+			HIGH_SCREEN_HEIGHT, "Hello World!");
 	mlx_mouse_hook(vars.win_ptr, &mouse_hook, &vars);
 	mlx_loop(vars.mlx_ptr);
 	return (0);
