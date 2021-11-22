@@ -39,7 +39,6 @@ OBJ_PREFX=$(addprefix $(OBJ_DIR),$(OBJ))
 CC_FLAG = -Wall -Wextra -Werror
 CC=gcc
 
-
 # for linux system uncomment the following line
 # ################################################################
 $(OBJ_DIR)%.o:%.c include/fdf.h
