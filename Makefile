@@ -22,7 +22,7 @@ _SUCCESS	=	[$(GREEN)SUCCESS$(RESET)]
 _INFO		=	[$(YELLOW)INFO$(RESET)]
 
 SRC=  	src/main.c	\
-		tools/ft_colors.c
+		tools/ft_window.c
 # path folodr
 MINILIBX_PATH=lib/mlx_linux
 LIBFT_PATH=lib/libft

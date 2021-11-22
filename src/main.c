@@ -12,22 +12,34 @@
 
 #include "../include/fdf.h"
 
-void	ft_fdf_init(void)
+/*
+init the window and the hook for the keyboard and mouse,
+then call the function that will draw the map
+*/
+void	ft_fdf_init(t_fdf fdf)
 {
-	t_vars	fdf;
-
-	fdf.mlx_ptr = mlx_init();
-	fdf.win_ptr = mlx_new_window(fdf.mlx_ptr, \
-	HIGH_SCREEN_WIDTH, HIGH_SCREEN_WIDTH, "Welcome To My App");
-	mlx_loop(fdf.mlx_ptr);
+	if (window_init(fdf) == false)
+		ft_putstr_fd(ERROR"error window init\n"END, 1);
 }
+
+/*
+entry point for application
+you need two arguments to run the program :
+1. the path to the file
+2. the name of the file
+example : ./fdf maps/map.fdf
+if there is no file in the maps folder, 
+you will get an error message and the program will exit.
+*/
 
 int	main(int argv, char **arg)
 {
+	t_fdf	fdf;
+
 	if (argv == 2)
 	{
 		ft_putstr_fd(SUCCESS"Your app will work.\n", 1);
-		ft_fdf_init();
+		ft_fdf_init(fdf);
 	}
 	else if (argv == 1)
 	{

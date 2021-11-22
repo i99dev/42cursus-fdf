@@ -23,11 +23,14 @@
 #  define ESCAPE_KEY 53
 # endif
 
-// INCLUDE
+// INCLUDE OUTSIDE
 # include "../lib/mlx_linux/mlx.h"
 # include "../lib/libft/libft.h"
-# include "../tools/tools.h"
-# include <stdio.h>
+// INCLUDE INSIDE
+# include "moues.h"
+# include "utils.h"
+# include "tools.h"
+# include "window.h"
 
 // massega color
 # define INFO		"\x1b[1m"
@@ -49,24 +52,5 @@
 // screen size
 # define HIGH_SCREEN_WIDTH 640
 # define HIGH_SCREEN_HEIGHT 480
-
-typedef struct moues
-{
-	int		x;
-	int		y;
-}				t_moues;
-
-typedef struct vars
-{
-	void	*mlx_ptr;
-	void	*win_ptr;
-	t_moues	mouse;
-}				t_vars;
-
-typedef enum bool
-{
-	false,
-	true
-}	t_bool;
 
 #endif
