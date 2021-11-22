@@ -21,8 +21,9 @@ RESET		=	\e[0m
 _SUCCESS	=	[$(GREEN)SUCCESS$(RESET)]
 _INFO		=	[$(YELLOW)INFO$(RESET)]
 
-SRC=  	src/main.c	\
-		tools/ft_window.c
+SRC=  	src/main.c			\
+		tools/ft_window.c	\
+		tools/get_next_line.c	
 # path folodr
 MINILIBX_PATH=lib/mlx_linux
 LIBFT_PATH=lib/libft

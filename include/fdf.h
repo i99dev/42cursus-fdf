@@ -26,11 +26,17 @@
 // INCLUDE OUTSIDE
 # include "../lib/mlx_linux/mlx.h"
 # include "../lib/libft/libft.h"
+
+// c libery
+# include <stdlib.h>
+# include <unistd.h>
+
 // INCLUDE INSIDE
 # include "moues.h"
 # include "utils.h"
 # include "tools.h"
 # include "window.h"
+# include "get_next_line.h"
 
 // massega color
 # define INFO		"\x1b[1m"
