@@ -29,15 +29,24 @@
 # include "../tools/tools.h"
 # include <stdio.h>
 
-// COLOR
-# define RED		"\x1b[31m"
-# define GREEN		"\x1b[32m"
-# define YELLOW		"\x1b[33m"
-# define BLUE		"\x1b[34m"
-# define MAGENTA	"\x1b[35m"
-# define CYAN		"\x1b[36m"
-# define RESET		"\x1b[0m"
+// massega color
+# define INFO		"\x1b[1m"
+# define WARNING	"\x1b[33m"
+# define ERROR		"\x1b[31m"
+# define SUCCESS	"\x1b[32m"
+# define END		"\x1b[0m"
 
+// color 
+# define WHITE		0xFFFFFF
+# define BLACK		0x000000
+# define RED		0xFF0000
+# define GREEN		0x00FF00
+# define BLUE		0x0000FF
+# define YELLOW		0xFFFF00
+# define CYAN		0x00FFFF
+# define MAGENTA	0xFF00FF
+
+// screen size
 # define HIGH_SCREEN_WIDTH 640
 # define HIGH_SCREEN_HEIGHT 480
 
