@@ -23,9 +23,20 @@
 #  define ESCAPE_KEY 53
 # endif
 
-# include "mlx.h"
-# include "tools.h"
+// INCLUDE
+# include "../lib/mlx_linux/mlx.h"
+# include "../lib/libft/libft.h"
+# include "../tools/tools.h"
 # include <stdio.h>
+
+// COLOR
+# define RED		"\x1b[31m"
+# define GREEN		"\x1b[32m"
+# define YELLOW		"\x1b[33m"
+# define BLUE		"\x1b[34m"
+# define MAGENTA	"\x1b[35m"
+# define CYAN		"\x1b[36m"
+# define RESET		"\x1b[0m"
 
 # define HIGH_SCREEN_WIDTH 640
 # define HIGH_SCREEN_HEIGHT 480
