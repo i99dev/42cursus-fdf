@@ -15,7 +15,7 @@ NAME=fdf
 SYSTEM=linux #
 
 SRC=  	src/main.c	\
-		tools/ft_colors.c
+		src/tools/ft_colors.c
 
 MINILIBX_PATH=mlx_linux
 
@@ -30,9 +30,9 @@ CC=gcc
 
 # for linux system uncomment the following line
 # ################################################################
-$(OBJ_DIR)%.o:%.c src/fdf.h
+$(OBJ_DIR)%.o:%.c include/fdf.h
 	@mkdir -p $(OBJ_DIR)/src
-	@mkdir -p $(OBJ_DIR)/tools
+	@mkdir -p $(OBJ_DIR)/src/tools
 	@echo "Compiling: $<"
 	@gcc $(CC_FLAGS) -I/usr/include -I$(MINILIBX_PATH) -O3 -c $< -o $@
 

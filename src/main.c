@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
-#include <stdlib.h>
+#include "../include/fdf.h"
 
 int	mouse_hook(int key_code, t_vars *var)
 {

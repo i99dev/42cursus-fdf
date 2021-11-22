@@ -14,17 +14,17 @@
 # define FDF_H
 
 # ifdef __linux__
-#  include "../include/key_linux.h"
+#  include "key_linux.h"
 #  define ESCAPE_KEY 65307
 # endif
 
 # ifdef __APPLE__
-#  include "../include/key_macos.h"
+#  include "key_macos.h"
 #  define ESCAPE_KEY 53
 # endif
 
 # include "mlx.h"
-# include "../tools/tools.h"
+# include "tools.h"
 # include <stdio.h>
 
 # define HIGH_SCREEN_WIDTH 640
@@ -43,13 +43,10 @@ typedef struct vars
 	t_moues	mouse;
 }				t_vars;
 
-typedef struct t_data
+typedef enum bool
 {
-	void	*image;
-	char	*addr;
-	int		bpp;
-	int		size_line;
-	int		endian;
-}	t_data;
+	false,
+	true
+}	t_bool;
 
 #endif
