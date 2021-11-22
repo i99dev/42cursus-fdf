@@ -13,7 +13,7 @@
         "--privileged",
         "-ti",
         "-e",
-        "DISPLAY=127.0.0.1:80"
+        "DISPLAY=192.168.4.222:0.0"
     ],
     // Set *default* container specific settings.json values on container create.
     "settings": {},
@@ -24,8 +24,9 @@
         "kube.42header",
         "donjayamanne.git-extension-pack",
         "gruntfuggly.todo-tree",
-        "streetsidesoftware.code-spell-checker",
-        "ms-vscode.cpptools-extension-pack"
+        "ms-vscode.cpptools-extension-pack",
+        "github.copilot",
+        "ms-vscode.makefile-tools"
     ],
     // Use 'forwardPorts' to make a list of ports inside the container available locally.
     // "forwardPorts": [],
