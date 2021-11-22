@@ -6,7 +6,7 @@
 /*   By: oal-tena <oal-tena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 06:22:45 by oal-tena          #+#    #+#             */
-/*   Updated: 2021/11/22 07:13:50 by oal-tena         ###   ########.fr       */
+/*   Updated: 2021/11/22 11:36:10 by oal-tena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 int	close_window(key_t key, t_fdf *fdf)
 {
-	ft_putstr_fd(SUCCESS"Goodbye.\n", 1);
+	mlx_string_put(fdf->mlx_ptr, fdf->win_ptr, 10, 10, 0xFFFFFF, fdf->filepath);
 	if (key == K_ESC)
 	{
+		ft_putstr_fd(SUCCESS"Goodbye.\n", 1);
 		mlx_destroy_window(fdf->mlx_ptr, fdf->win_ptr);
 		exit(0);
 	}

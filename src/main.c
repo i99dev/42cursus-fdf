@@ -21,6 +21,7 @@ void	ft_fdf_init(char *filepath)
 {
 	t_fdf	fdf;
 
+	fdf.filepath = filepath;
 	if (window_init(fdf) == false)
 		ft_putstr_fd(ERROR"error window init\n"END, 1);
 }
