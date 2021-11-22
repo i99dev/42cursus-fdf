@@ -12,7 +12,6 @@
 
 
 NAME=fdf
-SYSTEM=linux #
 
 # Color for terminel 
 GREEN		=	\e[38;5;118m
@@ -24,13 +23,17 @@ _INFO		=	[$(YELLOW)INFO$(RESET)]
 SRC=  	src/main.c			\
 		tools/ft_window.c	\
 		tools/get_next_line.c	
+
+
 # path folodr
 MINILIBX_PATH=lib/mlx_linux
+MINILIBX_MACOS=lib/macos
 LIBFT_PATH=lib/libft
 
 # libarey
 LIBFT=./lib/libft/libft.a
 MLX=./lib/mlx_linux/libmlx_linux.a
+MACOS=./lib/macos/libmlx.a
 
 
 OBJ_DIR=package/
@@ -42,34 +45,36 @@ CC=gcc
 
 # for linux system uncomment the following line
 # ################################################################
+# $(OBJ_DIR)%.o:%.c include/fdf.h
+# 	@mkdir -p $(OBJ_DIR)/src
+# 	@mkdir -p $(OBJ_DIR)/tools
+# 	@echo "Compiling: $<"
+# 	@gcc $(CC_FLAGS) -I/usr/include -I$(MINILIBX_PATH) -O3 -c $< -o $@
+
+# $(NAME):$(OBJ_PREFX) $(MLX) $(LIBFT)
+# 	@gcc $(OBJ_PREFX) -L/usr/lib $(MLX) $(LIBFT) -lXext -lX11 -lm -lz -o $(NAME)
+# 	@echo "make done !"
+# $(MLX):
+# 	@ $(MAKE) -C $(MINILIBX_PATH)ssss
+
+# for mac system uncomment the following line
+# ################################################################
 $(OBJ_DIR)%.o:%.c include/fdf.h
 	@mkdir -p $(OBJ_DIR)/src
 	@mkdir -p $(OBJ_DIR)/tools
 	@echo "Compiling: $<"
-	@gcc $(CC_FLAGS) -I/usr/include -I$(MINILIBX_PATH) -O3 -c $< -o $@
+	@gcc $(CC_FLAGS) -I/usr/include -I$(MINILIBX_MACOS) -c $< -o $@
 
-$(NAME):$(OBJ_PREFX) $(MLX) $(LIBFT)
-	@gcc $(OBJ_PREFX) -L/usr/lib $(MLX) $(LIBFT) -lXext -lX11 -lm -lz -o $(NAME)
+$(NAME):$(OBJ_PREFX) $(MACOS) $(LIBFT)
+	$(CC) $(OBJ_PREFX) $(MACOS) $(LIBFT)  -framework OpenGL -framework AppKit -o $(NAME)
 	@echo "make done !"
+$(MACOS):
+	@ $(MAKE) -C $(MINILIBX_MACOS)
+
+
 
 $(LIBFT):
 	@ $(MAKE) -C $(LIBFT_PATH)
-
-$(MLX):
-	@ $(MAKE) -C $(MINILIBX_PATH)
-
-
-# for mac system uncomment the following line
-# ################################################################
-# $(OBJ_DIR)%.o:%.c src/fdf.h
-# 	@mkdir -p $(OBJ_DIR)/src
-# 	@mkdir -p $(OBJ_DIR)/tools
-# 	@echo "Compiling: $<"
-# 	@gcc $(CC_FLAGS) -I/usr/include -I$(MINILIBX_PATH) -c $< -o $@
-
-# $(NAME):$(OBJ_PREFX)
-# 	@gcc $(OBJ_PREFX) -L$(MINILIBX_PATH) -l$(MINILIBX_PATH) -framework OpenGL -framework AppKit -o $(NAME)
-# 	@echo "make done !"
 
 
 
@@ -81,6 +86,8 @@ clean:
 	@ echo "$(_INFO) libft.a removed.\n"
 	@ $(MAKE) clean -C $(LIBFT_PATH)
 	@ echo "$(_INFO) libft removed.\n"
+	@ $(MAKE) clean -C $(MINILIBX_MACOS)
+	@ echo "$(_INFO) MLX removed.\n"
 	@ $(MAKE) clean -C $(MINILIBX_PATH)
 	@ echo "$(_INFO) MLX removed.\n"
 
