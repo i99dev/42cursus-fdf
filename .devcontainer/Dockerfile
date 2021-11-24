@@ -28,6 +28,7 @@ RUN apt-get update \
     'libxext-dev'   \
     'libx11-dev'    \
     'libbsd-dev' \
+    'lldb'      \
     xorg    \
     && apt-get clean autoclean \
     && apt-get autoremove --yes \
