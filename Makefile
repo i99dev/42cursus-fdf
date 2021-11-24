@@ -53,11 +53,11 @@ $(OBJ_DIR)%.o:%.c include/fdf.h
 	@echo "Compiling: $<"
 	@$(CC) $(CC_FLAGS) -I/usr/include -I$(MINILIBX_PATH) -O3 -c $< -o $@
 
-$(NAME):$(OBJ_PREFX) $(MLX) $(LIBFT)
+$(NAME):$(OBJ_PREFX) $(LIBFT) $(MLX)
 	@$(CC) $(OBJ_PREFX) -L/usr/lib $(MLX) $(LIBFT) -lXext -lX11 -lm -lz -o $(NAME)
 	@echo "make done !"
-$(MLX):
-	@ $(MAKE) -C $(MINILIBX_PATH)
+
+
 
 # for mac system uncomment the following line
 # ################################################################
@@ -78,8 +78,6 @@ $(MLX):
 $(LIBFT):
 	@ $(MAKE) -C $(LIBFT_PATH)
 
-
-
 all: $(NAME)
 
 clean:
@@ -88,10 +86,6 @@ clean:
 	@ echo "$(_INFO) libft.a removed.\n"
 	@ $(MAKE) clean -C $(LIBFT_PATH)
 	@ echo "$(_INFO) libft removed.\n"
-	@ $(MAKE) clean -C $(MINILIBX_MACOS)
-	@ echo "$(_INFO) MLX removed.\n"
-	@ $(MAKE) clean -C $(MINILIBX_PATH)
-	@ echo "$(_INFO) MLX removed.\n"
 
 
 fclean: 
