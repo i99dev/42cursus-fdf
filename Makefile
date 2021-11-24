@@ -23,7 +23,8 @@ _INFO		=	[$(YELLOW)INFO$(RESET)]
 SRC=  	src/main.c				\
 		tools/ft_window.c		\
 		tools/get_next_line.c	\
-		tools/ft_hook.c
+		tools/ft_hook.c			\
+		src/fdf.c
 
 
 # path folodr
@@ -42,35 +43,35 @@ OBJ=$(SRC:.c=.o)
 OBJ_PREFX=$(addprefix $(OBJ_DIR),$(OBJ))
 
 CC_FLAG = -Wall -Wextra -Werror
-CC=gcc
+CC=gcc -g
 
 # for linux system uncomment the following line
-# ################################################################
-$(OBJ_DIR)%.o:%.c include/fdf.h
-	@mkdir -p $(OBJ_DIR)/src
-	@mkdir -p $(OBJ_DIR)/tools
-	@echo "Compiling: $<"
-	@gcc $(CC_FLAGS) -I/usr/include -I$(MINILIBX_PATH) -O3 -c $< -o $@
-
-$(NAME):$(OBJ_PREFX) $(MLX) $(LIBFT)
-	@gcc $(OBJ_PREFX) -L/usr/lib $(MLX) $(LIBFT) -lXext -lX11 -lm -lz -o $(NAME)
-	@echo "make done !"
-$(MLX):
-	@ $(MAKE) -C $(MINILIBX_PATH)
-
-# for mac system uncomment the following line
 # ################################################################
 # $(OBJ_DIR)%.o:%.c include/fdf.h
 # 	@mkdir -p $(OBJ_DIR)/src
 # 	@mkdir -p $(OBJ_DIR)/tools
 # 	@echo "Compiling: $<"
-# 	@gcc $(CC_FLAGS) -I/usr/include -I$(MINILIBX_MACOS) -c $< -o $@
+# 	@gcc $(CC_FLAGS) -I/usr/include -I$(MINILIBX_PATH) -O3 -c $< -o $@
 
-# $(NAME):$(OBJ_PREFX) $(MACOS) $(LIBFT)
-# 	$(CC) $(OBJ_PREFX) $(MACOS) $(LIBFT)  -framework OpenGL -framework AppKit -o $(NAME)
+# $(NAME):$(OBJ_PREFX) $(MLX) $(LIBFT)
+# 	@gcc $(OBJ_PREFX) -L/usr/lib $(MLX) $(LIBFT) -lXext -lX11 -lm -lz -o $(NAME)
 # 	@echo "make done !"
-# $(MACOS):
-# 	@ $(MAKE) -C $(MINILIBX_MACOS)
+# $(MLX):
+# 	@ $(MAKE) -C $(MINILIBX_PATH)
+
+# for mac system uncomment the following line
+# ################################################################
+$(OBJ_DIR)%.o:%.c include/fdf.h
+	@mkdir -p $(OBJ_DIR)/src
+	@mkdir -p $(OBJ_DIR)/tools
+	@echo "Compiling: $<"
+	@$(CC) $(CC_FLAGS) -I/usr/include -I$(MINILIBX_MACOS) -c $< -o $@
+
+$(NAME):$(LIBFT) $(OBJ_PREFX) $(MACOS)
+	$(CC)  $(OBJ_PREFX) $(MACOS) $(LIBFT)  -framework OpenGL -framework AppKit -o $(NAME)
+	@echo "make done !"
+$(MACOS):
+	@ $(MAKE) -C $(MINILIBX_MACOS)
 
 
 

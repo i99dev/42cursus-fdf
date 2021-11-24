@@ -6,7 +6,7 @@
 /*   By: oal-tena <oal-tena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 11:22:44 by oal-tena          #+#    #+#             */
-/*   Updated: 2021/11/22 11:23:37 by oal-tena         ###   ########.fr       */
+/*   Updated: 2021/11/24 14:27:42 by oal-tena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,10 +98,10 @@ char	*get_next_line(int fd)
 	line = NULL;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
-	next_line = get_line(next_line, fd);
+	next_line = get_line(&next_line, fd);
 	if (next_line == NULL)
 		return (NULL);
-	line = ft_read_line(next_line);
+	line = ft_read_line(&next_line);
 	next_line = ft_save(next_line);
 	if (line[0] == '\0')
 	{

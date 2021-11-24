@@ -31,13 +31,16 @@
 // c libery
 # include <stdlib.h>
 # include <unistd.h>
+# include <fcntl.h>
+# include <stdio.h>
 
 // INCLUDE INSIDE
+# include "get_next_line.h"
 # include "moues.h"
+# include "image.h"
 # include "utils.h"
 # include "tools.h"
 # include "window.h"
-# include "get_next_line.h"
 
 // massega color
 # define INFO		"\x1b[1m"
@@ -59,5 +62,8 @@
 // screen size
 # define HIGH_SCREEN_WIDTH 640
 # define HIGH_SCREEN_HEIGHT 480
+
+//fuctions
+void	read_file(t_fdf *fdf);
 
 #endif

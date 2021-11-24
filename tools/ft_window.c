@@ -6,7 +6,7 @@
 /*   By: oal-tena <oal-tena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 06:22:45 by oal-tena          #+#    #+#             */
-/*   Updated: 2021/11/24 03:31:55 by oal-tena         ###   ########.fr       */
+/*   Updated: 2021/11/24 09:53:56 by oal-tena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
  * @return int 
  */
 
-int	registered_hook(t_fdf *fdf)
+void	registered_hook(t_fdf *fdf)
 {
 	ft_putstr_fd(SUCCESS"Hook registered.\n"END, 1);
 	mlx_key_hook(fdf->win_ptr, close_window, fdf);
@@ -33,6 +33,7 @@ t_bool	window_init(t_fdf fdf)
 	if (fdf.mlx_ptr == NULL || fdf.win_ptr == NULL)
 		return (false);
 	registered_hook(&fdf);
+	mlx_string_put(fdf.mlx_ptr, fdf.win_ptr, 250, 250, 0xFFFFFFFF, "hi Obaid");
 	mlx_loop(fdf.mlx_ptr);
 	return (true);
 }

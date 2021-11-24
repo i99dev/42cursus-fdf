@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   window.h                                           :+:      :+:    :+:   */
+/*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oal-tena <oal-tena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/22 06:59:03 by oal-tena          #+#    #+#             */
-/*   Updated: 2021/11/24 09:18:03 by oal-tena         ###   ########.fr       */
+/*   Created: 2021/11/24 10:07:25 by oal-tena          #+#    #+#             */
+/*   Updated: 2021/11/24 12:11:12 by oal-tena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WINDOW_H
-# define WINDOW_H
+#include "../include/fdf.h"
 
-/**
- * @brief e_fdf struct for all fdf project data.
- * 
- * @param mlx_ptr pointer to the mlx library.
- * @param win_ptr pointer to the window.
- * @param mouse pointer to the mouse.
- * 
- */
-typedef struct e_fdf
+void	read_file(t_fdf *fdf)
 {
-	char	*filepath;
-	void	*mlx_ptr;
-	void	*win_ptr;
-	t_moues	mouse;
-	t_image	img;
-}				t_fdf;
-#endif
+	int			fd;
+	int			size;
+	static char	*line;
+
+	fd = open(fdf->filepath, O_RDONLY);
+	printf("file fd is:%d\n", fd);
+	get_next_line(fd);
+}
