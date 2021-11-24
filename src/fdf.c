@@ -6,7 +6,7 @@
 /*   By: oal-tena <oal-tena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 10:07:25 by oal-tena          #+#    #+#             */
-/*   Updated: 2021/11/24 12:11:12 by oal-tena         ###   ########.fr       */
+/*   Updated: 2021/11/24 14:43:52 by oal-tena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,15 @@ void	read_file(t_fdf *fdf)
 	int			fd;
 	int			size;
 	static char	*line;
+	int			i;
 
 	fd = open(fdf->filepath, O_RDONLY);
 	printf("file fd is:%d\n", fd);
-	get_next_line(fd);
+	line = get_next_line(fd);
+	i = 0;
+	line = get_next_line(fd);
+	while (line)
+	{
+		line = get_next_line(fd);
+	}
 }
