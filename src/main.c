@@ -23,7 +23,7 @@ void	ft_fdf_init(char *filepath)
 
 	fdf.filepath = filepath;
 	if (window_init(fdf) == false)
-		ft_putstr_fd(ERROR"error window init\n"END, 1);
+		return (ft_putstr_fd(ERROR"error window init\n"END, 1));
 }
 
 /**

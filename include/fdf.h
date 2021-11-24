@@ -15,13 +15,13 @@
 
 # ifdef __linux__
 #  include "key_linux.h"
-# include "../lib/mlx_linux/mlx.h"
+#  include "../lib/mlx_linux/mlx.h"
 #  define ESCAPE_KEY 65307
 # endif
 
 # ifdef __APPLE__
 #  include "key_macos.h"
-# include   "../lib/macos/mlx.h"
+#  include   "../lib/macos/mlx.h"
 #  define ESCAPE_KEY 53
 # endif
 

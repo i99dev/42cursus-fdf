@@ -20,9 +20,10 @@ RESET		=	\e[0m
 _SUCCESS	=	[$(GREEN)SUCCESS$(RESET)]
 _INFO		=	[$(YELLOW)INFO$(RESET)]
 
-SRC=  	src/main.c			\
-		tools/ft_window.c	\
-		tools/get_next_line.c	
+SRC=  	src/main.c				\
+		tools/ft_window.c		\
+		tools/get_next_line.c	\
+		tools/ft_hook.c
 
 
 # path folodr
@@ -45,31 +46,31 @@ CC=gcc
 
 # for linux system uncomment the following line
 # ################################################################
-# $(OBJ_DIR)%.o:%.c include/fdf.h
-# 	@mkdir -p $(OBJ_DIR)/src
-# 	@mkdir -p $(OBJ_DIR)/tools
-# 	@echo "Compiling: $<"
-# 	@gcc $(CC_FLAGS) -I/usr/include -I$(MINILIBX_PATH) -O3 -c $< -o $@
-
-# $(NAME):$(OBJ_PREFX) $(MLX) $(LIBFT)
-# 	@gcc $(OBJ_PREFX) -L/usr/lib $(MLX) $(LIBFT) -lXext -lX11 -lm -lz -o $(NAME)
-# 	@echo "make done !"
-# $(MLX):
-# 	@ $(MAKE) -C $(MINILIBX_PATH)ssss
-
-# for mac system uncomment the following line
-# ################################################################
 $(OBJ_DIR)%.o:%.c include/fdf.h
 	@mkdir -p $(OBJ_DIR)/src
 	@mkdir -p $(OBJ_DIR)/tools
 	@echo "Compiling: $<"
-	@gcc $(CC_FLAGS) -I/usr/include -I$(MINILIBX_MACOS) -c $< -o $@
+	@gcc $(CC_FLAGS) -I/usr/include -I$(MINILIBX_PATH) -O3 -c $< -o $@
 
-$(NAME):$(OBJ_PREFX) $(MACOS) $(LIBFT)
-	$(CC) $(OBJ_PREFX) $(MACOS) $(LIBFT)  -framework OpenGL -framework AppKit -o $(NAME)
+$(NAME):$(OBJ_PREFX) $(MLX) $(LIBFT)
+	@gcc $(OBJ_PREFX) -L/usr/lib $(MLX) $(LIBFT) -lXext -lX11 -lm -lz -o $(NAME)
 	@echo "make done !"
-$(MACOS):
-	@ $(MAKE) -C $(MINILIBX_MACOS)
+$(MLX):
+	@ $(MAKE) -C $(MINILIBX_PATH)
+
+# for mac system uncomment the following line
+# ################################################################
+# $(OBJ_DIR)%.o:%.c include/fdf.h
+# 	@mkdir -p $(OBJ_DIR)/src
+# 	@mkdir -p $(OBJ_DIR)/tools
+# 	@echo "Compiling: $<"
+# 	@gcc $(CC_FLAGS) -I/usr/include -I$(MINILIBX_MACOS) -c $< -o $@
+
+# $(NAME):$(OBJ_PREFX) $(MACOS) $(LIBFT)
+# 	$(CC) $(OBJ_PREFX) $(MACOS) $(LIBFT)  -framework OpenGL -framework AppKit -o $(NAME)
+# 	@echo "make done !"
+# $(MACOS):
+# 	@ $(MAKE) -C $(MINILIBX_MACOS)
 
 
 
