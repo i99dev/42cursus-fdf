@@ -33,6 +33,9 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdio.h>
+# include <math.h>
+
+
 
 // INCLUDE INSIDE
 # include "get_next_line.h"

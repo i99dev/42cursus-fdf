@@ -47,31 +47,31 @@ CC=gcc -g -O0
 
 # for linux system uncomment the following line
 # ################################################################
-$(OBJ_DIR)%.o:%.c include/fdf.h
-	@mkdir -p $(OBJ_DIR)/src
-	@mkdir -p $(OBJ_DIR)/tools
-	@echo "Compiling: $<"
-	@$(CC) $(CC_FLAGS) -I/usr/include -I$(MINILIBX_PATH) -O3 -c $< -o $@
+# $(OBJ_DIR)%.o:%.c include/fdf.h
+# 	@mkdir -p $(OBJ_DIR)/src
+# 	@mkdir -p $(OBJ_DIR)/tools
+# 	@echo "Compiling: $<"
+# 	@$(CC) $(CC_FLAGS) -I/usr/include -I$(MINILIBX_PATH) -O3 -c $< -o $@
 
-$(NAME):$(OBJ_PREFX) $(LIBFT) $(MLX)
-	@$(CC) $(OBJ_PREFX) -L/usr/lib $(MLX) $(LIBFT) -lXext -lX11 -lm -lz -o $(NAME)
-	@echo "make done !"
+# $(NAME):$(OBJ_PREFX) $(LIBFT) $(MLX)
+# 	@$(CC) $(OBJ_PREFX) -L/usr/lib $(MLX) $(LIBFT) -lXext -lX11 -lm -lz -o $(NAME)
+# 	@echo "make done !"
 
 
 
 # for mac system uncomment the following line
 # ################################################################
-# $(OBJ_DIR)%.o:%.c include/fdf.h
-# 	@mkdir -p $(OBJ_DIR)/src
-# 	@mkdir -p $(OBJ_DIR)/tools
-# 	@echo "Compiling: $<"
-# 	@$(CC) $(CC_FLAGS) -I/usr/include -I$(MINILIBX_MACOS) -c $< -o $@
+$(OBJ_DIR)%.o:%.c include/fdf.h
+	@mkdir -p $(OBJ_DIR)/src
+	@mkdir -p $(OBJ_DIR)/tools
+	@echo "Compiling: $<"
+	@$(CC) $(CC_FLAGS) -I/usr/include -I$(MINILIBX_MACOS) -c $< -o $@
 
-# $(NAME):$(LIBFT) $(OBJ_PREFX) $(MACOS)
-# 	$(CC)  $(OBJ_PREFX) $(MACOS) $(LIBFT)  -framework OpenGL -framework AppKit -o $(NAME)
-# 	@echo "make done !"
-# $(MACOS):
-# 	@ $(MAKE) -C $(MINILIBX_MACOS)
+$(NAME):$(LIBFT) $(OBJ_PREFX) $(MACOS)
+	$(CC)  $(OBJ_PREFX) $(MACOS) $(LIBFT)  -framework OpenGL -framework AppKit -o $(NAME)
+	@echo "make done !"
+$(MACOS):
+	@ $(MAKE) -C $(MINILIBX_MACOS)
 
 
 
