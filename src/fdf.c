@@ -6,14 +6,14 @@
 /*   By: oal-tena <oal-tena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 10:07:25 by oal-tena          #+#    #+#             */
-/*   Updated: 2021/11/28 09:28:18 by oal-tena         ###   ########.fr       */
+/*   Updated: 2021/11/29 00:59:22 by oal-tena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
 /**
- * @brief set image size 
+ * @brief set image size and save on pointer
  * 
  * @param width the width for image and type is int.
  * @param height the height for image and type is int.
