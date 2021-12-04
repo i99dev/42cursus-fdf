@@ -6,7 +6,7 @@
 /*   By: oal-tena <oal-tena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 06:22:45 by oal-tena          #+#    #+#             */
-/*   Updated: 2021/11/24 09:53:56 by oal-tena         ###   ########.fr       */
+/*   Updated: 2021/12/04 04:22:01 by oal-tena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ void	registered_hook(t_fdf *fdf)
 	mlx_key_hook(fdf->win_ptr, close_window, fdf);
 }
 
+/**
+ * @brief init windoes for project and rutern false if there any error.
+ * 
+ * @param fdf 
+ * @return t_bool 
+ */
 t_bool	window_init(t_fdf fdf)
 {
 	fdf.mlx_ptr = mlx_init();
