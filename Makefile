@@ -24,6 +24,7 @@ SRC=  	src/main.c				\
 		tools/ft_window.c		\
 		tools/get_next_line.c	\
 		tools/ft_hook.c			\
+		tools/utils.c		\
 		src/fdf.c
 
 

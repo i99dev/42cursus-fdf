@@ -1,26 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oal-tena <oal-tena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/22 06:20:04 by oal-tena          #+#    #+#             */
-/*   Updated: 2021/12/04 04:05:21 by oal-tena         ###   ########.fr       */
+/*   Created: 2021/12/04 03:20:29 by oal-tena          #+#    #+#             */
+/*   Updated: 2021/12/04 04:09:10 by oal-tena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#include "../include/fdf.h"
 
-# include "fdf.h"
-# include "window.h"
-
-int		ft_count_split(char *line, char c);
-
-typedef enum e_bool
+/**
+ * @brief 
+ * 
+ * @param line 
+ * @param c 
+ * @return int 
+ */
+int	ft_count_split(char *line, char c)
 {
-	false,
-	true
-}				t_bool;
-#endif
+	int		count;
+	char	**split;
+
+	split = ft_split(line, c);
+	count = 0;
+	while (1)
+	{
+		if (!split[count])
+			break ;
+		count++;
+	}
+	return (count);
+}

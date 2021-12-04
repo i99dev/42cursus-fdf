@@ -66,6 +66,6 @@
 # define HIGH_SCREEN_WIDTH 640
 # define HIGH_SCREEN_HEIGHT 480
 
-void	read_file(t_fdf *fdf);
+void	ft_read_file(t_fdf *fdf);
 
 #endif

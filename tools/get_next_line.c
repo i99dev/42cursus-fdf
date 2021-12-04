@@ -6,7 +6,7 @@
 /*   By: oal-tena <oal-tena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 11:22:44 by oal-tena          #+#    #+#             */
-/*   Updated: 2021/11/24 15:27:08 by oal-tena         ###   ########.fr       */
+/*   Updated: 2021/12/04 04:00:56 by oal-tena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,12 @@ char	*get_line(char *src, int fd)
 	return (src);
 }
 
+/**
+ * @brief Get the next line object
+ * 
+ * @param fd 
+ * @return char* 
+ */
 char	*get_next_line(int fd)
 {
 	char		*line;

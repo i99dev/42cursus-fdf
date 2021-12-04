@@ -6,58 +6,51 @@
 /*   By: oal-tena <oal-tena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 10:07:25 by oal-tena          #+#    #+#             */
-/*   Updated: 2021/11/29 00:59:22 by oal-tena         ###   ########.fr       */
+/*   Updated: 2021/12/04 04:10:00 by oal-tena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
 /**
- * @brief set image size and save on pointer
+ * @brief these functions help us to know how many pixels
+ * by x and reservation Space on memory, if success return True
+ * if failed return false. 
  * 
- * @param width the width for image and type is int.
- * @param height the height for image and type is int.
+ * @return Bool 
  */
-void	set_image_size(int width, int height)
+t_bool	ft_geo_alloc(int fd)
 {
-	t_image	img;
+	char	*line;
+	int		s;
+	int		sedag;
 
-	img.width = width;
-	img.height = height;
-}
-
-void	drawing_line(void)
-{
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (!line)
+			break ;
+		s = ft_count_split(line, ' ');
+	}
+	return (1);
 }
 
 /**
- * @brief read_file function to read fdf file and convert all data to int
- * and save on image data struct. 
+ * @brief  
  * 
  * @param fdf 
  */
-void	read_file(t_fdf *fdf)
+void	ft_read_file(t_fdf *fdf)
 {
-	char		*temp;
-	int			fd;
-	int			width;
-	int			height;
+	int	fd;
+	int	r;
 
 	fd = open(fdf->filepath, O_RDONLY);
-	if (fd == -1)
-		ft_putstr_fd(ERROR"Error: File not found\n"END, 1);
-	width = 0;
-	height = 0;
-	while (1)
+	r = read(fd, NULL, BUFFER_SIZE);
+	if (!ft_geo_alloc(fd))
 	{
-		temp = get_next_line(fd);
-		if (width == 0)
-			width = ft_strlen(temp);
-		if (!temp)
-			break ;
-		height++;
-		printf("%s", temp);
-		free(temp);
+		close(fd);
+		ft_putstr_fd(ERROR"No file open\n"END, 1);
 	}
-	set_image_size(width, height);
+	close(fd);
 }

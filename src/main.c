@@ -22,7 +22,7 @@ void	ft_fdf_init(char *filepath)
 	t_fdf	fdf;
 
 	fdf.filepath = filepath;
-	read_file(&fdf);
+	ft_read_file(&fdf);
 	return ;
 	if (window_init(fdf) == false)
 		return (ft_putstr_fd(ERROR"error window init\n"END, 1));
