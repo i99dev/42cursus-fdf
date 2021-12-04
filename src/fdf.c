@@ -6,14 +6,14 @@
 /*   By: oal-tena <oal-tena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 10:07:25 by oal-tena          #+#    #+#             */
-/*   Updated: 2021/12/04 06:23:20 by oal-tena         ###   ########.fr       */
+/*   Updated: 2021/12/04 09:09:26 by oal-tena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
 /**
- * @brief these functions help us to know how many pixels
+ * @brief these function help us to know how many pixels
  * by x and reservation Space on memory, if success return True
  * if failed return false. 
  * 
@@ -23,11 +23,10 @@ t_bool	ft_geo_alloc(int fd)
 {
 	char		*line;
 	t_geometry	geo;
-	int			xspc;
 	int			xpxl_prv;
 	int			xpxl;
 
-	geo.xspc = 0;
+	geo.xedges = 0;
 	geo.xpxl = 0;
 	xpxl_prv = 0;
 	while (1)
@@ -35,18 +34,17 @@ t_bool	ft_geo_alloc(int fd)
 		line = get_next_line(fd);
 		if (!line)
 			break ;
-		xpxl = ft_count_split(line, ' ');
+		xpxl = ft_count_word(line, ' ');
 		printf("%d\n", xpxl);
 		geo.xpxl += xpxl;
 		if (xpxl)
-			geo.xspc += xpxl - 1 + ft_min(xpxl, xpxl_prv);
+			geo.xedges += xpxl - 1 + ft_min(xpxl, xpxl_prv);
 		xpxl_prv = xpxl;
 	}
-	printf("spc->%d,pxl->%d", geo.xspc, geo.xpxl);
-	return (1);
+	return (true);
 }
 
-//TODO remove printf line on fuc.
+//TODO remove printf line on function.
 
 /**
  * @brief  
