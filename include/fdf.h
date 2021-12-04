@@ -35,10 +35,9 @@
 # include <stdio.h>
 # include <math.h>
 
-
-
 // INCLUDE INSIDE
 # include "get_next_line.h"
+# include "geometry.h"
 # include "moues.h"
 # include "image.h"
 # include "utils.h"
