@@ -6,7 +6,7 @@
 /*   By: oal-tena <oal-tena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 06:22:45 by oal-tena          #+#    #+#             */
-/*   Updated: 2021/12/04 04:22:01 by oal-tena         ###   ########.fr       */
+/*   Updated: 2021/12/06 12:12:38 by oal-tena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 void	registered_hook(t_fdf *fdf)
 {
 	ft_putstr_fd(SUCCESS"Hook registered.\n"END, 1);
+	hook_windoes_layout(fdf);
 	mlx_key_hook(fdf->win_ptr, close_window, fdf);
 }
 
@@ -35,11 +36,10 @@ t_bool	window_init(t_fdf fdf)
 {
 	fdf.mlx_ptr = mlx_init();
 	fdf.win_ptr = mlx_new_window(fdf.mlx_ptr, \
-	HIGH_SCREEN_WIDTH, HIGH_SCREEN_WIDTH, "FDF 3D Maps application");
+	SCREEN_WIDTH, SCREEN_HEIGHT, "FDF 3D Maps application");
 	if (fdf.mlx_ptr == NULL || fdf.win_ptr == NULL)
 		return (false);
 	registered_hook(&fdf);
-	mlx_string_put(fdf.mlx_ptr, fdf.win_ptr, 250, 250, 0xFFFFFFFF, "hi Obaid");
 	mlx_loop(fdf.mlx_ptr);
 	return (true);
 }

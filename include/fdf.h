@@ -62,8 +62,8 @@
 # define MAGENTA	0xFF00FF
 
 // screen size
-# define HIGH_SCREEN_WIDTH 640
-# define HIGH_SCREEN_HEIGHT 480
+# define SCREEN_WIDTH 1080
+# define SCREEN_HEIGHT 600
 
 void	ft_read_file(t_fdf *fdf);
 

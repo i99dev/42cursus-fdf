@@ -20,12 +20,13 @@ RESET		=	\e[0m
 _SUCCESS	=	[$(GREEN)SUCCESS$(RESET)]
 _INFO		=	[$(YELLOW)INFO$(RESET)]
 
-SRC=  	bre_line.c				\
-		tools/ft_window.c		\
+SRC=  	src/main.c				\
+		src/ft_window.c		\
 		tools/get_next_line.c	\
 		tools/ft_hook.c			\
 		tools/utils.c		\
-		src/fdf.c
+		src/ft_fdf.c		\
+		tools/u_win_design.c
 
 
 # path folodr
