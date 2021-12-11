@@ -6,7 +6,7 @@
 /*   By: oal-tena <oal-tena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 11:56:42 by oal-tena          #+#    #+#             */
-/*   Updated: 2021/12/06 16:30:31 by oal-tena         ###   ########.fr       */
+/*   Updated: 2021/12/11 06:08:46 by oal-tena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,22 @@ void	type_titel(t_fdf *fdf)
 
 t_bool	hook_windoes_layout(t_fdf *fdf)
 {	
-	void	*image;
+	void	*img_ptr;
+	char	*plx;
+	int		i;
+	int		X;
 
 	split_windoes(fdf);
 	type_titel(fdf);
-	image = mlx_new_image(fdf->mlx_ptr, 400, 250);
-	mlx_pixel_put(fdf->mlx_ptr, fdf->win_ptr, 10, 10, 0xFFFFFF);
-	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr, image, 300, 50);
+	img_ptr = mlx_new_image(fdf->mlx_ptr, 500, 250);
+	plx = mlx_get_data_addr(img_ptr, &fdf->img.bpp, \
+		&fdf->img.size_line, &fdf->img.endian);
+	X = 0;
+	while (X <= 1000)
+	{
+		plx[X+=2] = 255;
+		X++;
+	}
+	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr, img_ptr, 200, 200);
 	return (true);
 }
