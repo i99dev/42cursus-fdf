@@ -55,6 +55,7 @@ void	image_init(t_fdf *fdf, t_image *img)
 	img->img_ptr = mlx_new_image(fdf->mlx_ptr, img->width, img->height);
 	img->img_addr = mlx_get_data_addr(img->img_ptr, &img->bpp, \
 		&img->size_line, &img->endian);
+    
 }
 
 t_bool	hook_windoes_layout(t_fdf *fdf)

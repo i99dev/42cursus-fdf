@@ -12,18 +12,21 @@
 
 #include "../include/fdf.h"
 
+void	data_init(t_fdf *fdf)
+{
+	ft_read_file(fdf, &fdf->img);
+}
+
 /**
  * @brief register the event for the window to add your event.
  * 
  * @param fdf its pointer to the fdf struct
  * @return int 
  */
-
 void	registered_hook(t_fdf *fdf)
 {
 	ft_putstr_fd(SUCCESS"Hook registered.\n"END, 1);
 	hook_windoes_layout(fdf);
-	ft_read_file(fdf, &fdf->img);
 	mlx_key_hook(fdf->win_ptr, close_window, fdf);
 }
 
@@ -41,6 +44,7 @@ t_bool	window_init(t_fdf fdf)
 	if (fdf.mlx_ptr == NULL || fdf.win_ptr == NULL)
 		return (false);
 	registered_hook(&fdf);
+	data_init(&fdf);
 	mlx_put_image_to_window(fdf.mlx_ptr, fdf.win_ptr, fdf.img.img_ptr, 450, 25);
 	mlx_loop(fdf.mlx_ptr);
 	return (true);
