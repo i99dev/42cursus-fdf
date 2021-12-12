@@ -6,7 +6,7 @@
 /*   By: oal-tena <oal-tena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:02:18 by oal-tena          #+#    #+#             */
-/*   Updated: 2021/11/25 01:42:49 by oal-tena         ###   ########.fr       */
+/*   Updated: 2021/12/12 00:16:46 by oal-tena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
  */
 typedef struct e_image
 {
-	void	*img;
+	void	*img_ptr;
 	int		width;
 	int		height;
 	int		bpp;

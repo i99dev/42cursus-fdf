@@ -6,11 +6,12 @@
 /*   By: oal-tena <oal-tena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 11:56:42 by oal-tena          #+#    #+#             */
-/*   Updated: 2021/12/11 06:08:46 by oal-tena         ###   ########.fr       */
+/*   Updated: 2021/12/12 00:32:40 by oal-tena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
+#include <stdio.h>
 
 void	split_windoes(t_fdf *fdf)
 {
@@ -42,24 +43,45 @@ void	type_titel(t_fdf *fdf)
 		0xFFFFFF, "FDF Project!");
 }
 
+
+//more inf : https://awesomeopensource.com/project/keuhdall/images_example
+void	image_init(t_fdf *fdf, t_image *img)
+{
+	int		x;
+	int		y;
+	char	*pxl;
+
+	img->height = 500;
+	img->width = 500;
+	img->img_ptr = mlx_new_image(fdf->mlx_ptr, img->width, img->height);
+	pxl = mlx_get_data_addr(img->img_ptr, &img->bpp, \
+		&img->size_line, &img->endian);
+	x = 0;
+	y = 0;
+	while (x <= 2000)
+	{
+		pxl[(x)] = 250;
+		x++;
+	}
+	x = 499;
+	y = 0;
+	while (y <= 125)
+	{
+		pxl[(x * 4 + 4 * img->size_line * y)] = 250;
+		pxl[(x * 4 + 4 * img->size_line * y) + 1] = 250;
+		pxl[(x * 4 + 4 * img->size_line * y) + 2] = 250;
+		y++;
+	}
+	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr, img->img_ptr, 450, 25);
+}
+
 t_bool	hook_windoes_layout(t_fdf *fdf)
 {	
-	void	*img_ptr;
-	char	*plx;
 	int		i;
-	int		X;
 
 	split_windoes(fdf);
 	type_titel(fdf);
-	img_ptr = mlx_new_image(fdf->mlx_ptr, 500, 250);
-	plx = mlx_get_data_addr(img_ptr, &fdf->img.bpp, \
-		&fdf->img.size_line, &fdf->img.endian);
-	X = 0;
-	while (X <= 1000)
-	{
-		plx[X+=2] = 255;
-		X++;
-	}
-	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr, img_ptr, 200, 200);
+	image_init(fdf, &fdf->img);
+	ft_putnbr_fd(fdf->img.bpp, 1);
 	return (true);
 }
