@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   ft_fdf.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oal-tena <oal-tena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 10:07:25 by oal-tena          #+#    #+#             */
-/*   Updated: 2021/12/04 09:09:26 by oal-tena         ###   ########.fr       */
+/*   Updated: 2021/12/12 10:12:41 by oal-tena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,20 @@ t_bool	ft_geo_alloc(int fd)
  * 
  * @param fdf 
  */
-void	ft_read_file(t_fdf *fdf)
+void	ft_read_file(t_fdf *fdf, t_image *img)
 {
 	int		fd;
 	int		r;
+    int     x;
 	char	*line;
 
 	fd = open(fdf->filepath, O_RDONLY);
+    x = 0;
+    while (++x <= 2000)
+	{
+		img->img_addr[x] = -1;
+		x++;
+	}
 	while (1)
 	{
 		line = get_next_line(fd);

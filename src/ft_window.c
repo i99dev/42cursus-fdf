@@ -6,7 +6,7 @@
 /*   By: oal-tena <oal-tena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 06:22:45 by oal-tena          #+#    #+#             */
-/*   Updated: 2021/12/06 12:12:38 by oal-tena         ###   ########.fr       */
+/*   Updated: 2021/12/12 10:05:44 by oal-tena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	registered_hook(t_fdf *fdf)
 {
 	ft_putstr_fd(SUCCESS"Hook registered.\n"END, 1);
 	hook_windoes_layout(fdf);
+	ft_read_file(fdf, &fdf->img);
 	mlx_key_hook(fdf->win_ptr, close_window, fdf);
 }
 
@@ -40,6 +41,7 @@ t_bool	window_init(t_fdf fdf)
 	if (fdf.mlx_ptr == NULL || fdf.win_ptr == NULL)
 		return (false);
 	registered_hook(&fdf);
+	mlx_put_image_to_window(fdf.mlx_ptr, fdf.win_ptr, fdf.img.img_ptr, 450, 25);
 	mlx_loop(fdf.mlx_ptr);
 	return (true);
 }

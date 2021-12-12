@@ -65,6 +65,6 @@
 # define SCREEN_WIDTH 1080
 # define SCREEN_HEIGHT 600
 
-void	ft_read_file(t_fdf *fdf);
+void	ft_read_file(t_fdf *fdf, t_image *img);
 
 #endif
