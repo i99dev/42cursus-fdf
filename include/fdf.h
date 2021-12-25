@@ -37,12 +37,6 @@
 
 // INCLUDE INSIDE
 # include "get_next_line.h"
-# include "geometry.h"
-# include "moues.h"
-# include "image.h"
-# include "utils.h"
-# include "tools.h"
-# include "window.h"
 
 // massega color
 # define INFO		"\x1b[1m"
@@ -65,6 +59,27 @@
 # define SCREEN_WIDTH 1080
 # define SCREEN_HEIGHT 600
 
-void	ft_read_file(t_fdf *fdf, t_image *img);
+typedef struct t_fdf
+{
+	void		*mlx_ptr;
+	void		*win_ptr;
+	void		*img_ptr;
+	char		*data_addr;
+	int			bits_per_pixel;
+	int			size_line;
+	int			endian;
+	int			width;
+	int			height;
+	float		zoom;
+	float		move_x;
+	float		move_y;
+	int			color;
+	int			**map;
+	int			map_width;
+	int			map_height;
+	int			max_z;
+	int			min_z;
+	int			iso;
+}				t_fdf;
 
 #endif
