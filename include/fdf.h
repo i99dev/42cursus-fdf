@@ -64,6 +64,7 @@ typedef struct t_fdf
 	void		*mlx_ptr;
 	void		*win_ptr;
 	void		*img_ptr;
+	char		*file_path;
 	char		*data_addr;
 	int			bits_per_pixel;
 	int			size_line;
@@ -82,4 +83,6 @@ typedef struct t_fdf
 	int			iso;
 }				t_fdf;
 
+void	regsiter_hooks(t_fdf *fdf);
+void	ft_read_file(char *file_path, t_fdf *fdf);
 #endif

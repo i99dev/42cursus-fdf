@@ -21,6 +21,8 @@ _SUCCESS	=	[$(GREEN)SUCCESS$(RESET)]
 _INFO		=	[$(YELLOW)INFO$(RESET)]
 
 SRC=  	src/main.c					\
+		src/hook.c					\
+		src/read.c					\
 		tools/ft_get_next_line.c	\
 		tools/ft_hook.c				\
 
