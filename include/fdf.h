@@ -85,4 +85,6 @@ typedef struct t_fdf
 
 void	regsiter_hooks(t_fdf *fdf);
 void	ft_read_file(char *file_path, t_fdf *fdf);
+void	printf_map(t_fdf *fdf);
+
 #endif
