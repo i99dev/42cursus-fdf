@@ -6,7 +6,7 @@
 /*   By: oal-tena <oal-tena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 13:26:33 by oal-tena          #+#    #+#             */
-/*   Updated: 2022/01/05 13:58:17 by oal-tena         ###   ########.fr       */
+/*   Updated: 2022/01/05 14:28:11 by oal-tena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,15 @@
 void	put_pixel(t_fdf *fdf, int x, int y, int color)
 {
 	int		i;
+	int		xyl;
+	int		xyd;
 
 	i = (x * 4 * (fdf->img_width / fdf->map_width)) + \
 	(y * fdf->size_line * (fdf->img_height / fdf->map_height));
 	fdf->img_data[i] = color;
 	fdf->img_data[i + 1] = color >> 8;
-	fdf->img_data[i + 2] = color >> 16;	
+	fdf->img_data[i + 2] = color >> 16;
 }
-
 
 void	put_map_image(t_fdf *fdf)
 {
@@ -40,7 +41,7 @@ void	put_map_image(t_fdf *fdf)
 			else if (fdf->map[i][j] < 0)
 				put_pixel(fdf, j, i, 0x042FFF);
 			else if (fdf->map[i][j] > 0)
-				put_pixel(fdf, j, i, 0xFF0000);	
+				put_pixel(fdf, j, i, 0xFF0000);
 			j++;
 		}
 		i++;
