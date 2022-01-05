@@ -12,6 +12,19 @@
 
 #include "../include/fdf.h"
 
+void	init_img(t_fdf *fdf)
+{
+	fdf->endian = 0;
+	fdf->bpp = 32;
+	fdf->img_width = 600;
+	fdf->img_height = 300;
+	fdf->size_line = fdf->map_width * 4;
+	fdf->img_ptr = mlx_new_image(fdf->mlx_ptr, fdf->img_width, fdf->img_height);
+	fdf->img_data = mlx_get_data_addr(fdf->img_ptr, &fdf->bpp, \
+	&fdf->size_line, &fdf->endian);
+}
+
+
 void	app_init(char *file_path, t_fdf *fdf)
 {
 	fdf->mlx_ptr = mlx_init();
@@ -19,7 +32,9 @@ void	app_init(char *file_path, t_fdf *fdf)
 	SCREEN_WIDTH, SCREEN_HEIGHT, "FDF");
 	regsiter_hooks(fdf);
 	ft_read_file(file_path, fdf);
-    printf_map(fdf);
+	init_img(fdf);
+	put_map_image(fdf);
+	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr, fdf->img_ptr, 300, 50);
 	mlx_loop(fdf->mlx_ptr);
 }
 

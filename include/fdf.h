@@ -64,12 +64,16 @@ typedef struct t_fdf
 	void		*mlx_ptr;
 	void		*win_ptr;
 	void		*img_ptr;
+	char		*img_data;
 	char		*file_path;
 	char		*data_addr;
 	int			bits_per_pixel;
 	int			size_line;
 	int			endian;
+	int			bpp;
 	int			width;
+    int         img_width;
+    int         img_height;
 	int			height;
 	float		zoom;
 	float		move_x;
@@ -85,6 +89,5 @@ typedef struct t_fdf
 
 void	regsiter_hooks(t_fdf *fdf);
 void	ft_read_file(char *file_path, t_fdf *fdf);
-void	printf_map(t_fdf *fdf);
-
+void	put_map_image(t_fdf *fdf);
 #endif

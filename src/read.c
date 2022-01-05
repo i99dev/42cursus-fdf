@@ -6,7 +6,7 @@
 /*   By: oal-tena <oal-tena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 13:10:57 by oal-tena          #+#    #+#             */
-/*   Updated: 2022/01/04 13:57:35 by oal-tena         ###   ########.fr       */
+/*   Updated: 2022/01/05 13:33:43 by oal-tena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,17 @@
 int	ft_strlen_c(const char *c )
 {
 	int	i;
+	int	j;
 
 	i = 0;
-	while (*c)
+	j = 0;
+	while (c[i] != '\0')
 	{
-		if (*c == ' ')
-			i++;
-		c++;
+		if (c[i] == ' ' && c[i + 1] != ' ')
+			j++;
+		i++;
 	}
-	return (i / 2 + 1);
+	return (j + 1);
 }
 
 int	*convert_to_matrix(char *line)
@@ -69,7 +71,6 @@ void	ft_read_file(char *file_path, t_fdf *fdf)
 			break ;
 		if (i == 0)
 			fdf->map_width = ft_strlen_c(line);
-		printf("%d\n", fdf->map_width);
 		fdf->map_height++;
 		i++;
 	}
@@ -82,7 +83,6 @@ void	ft_read_file(char *file_path, t_fdf *fdf)
 		line = get_next_line(fd);
 		if (line == NULL)
 			break ;
-		printf("%s", line);
 		fdf->map[i] = convert_to_matrix(line);
 		i++;
 	}
