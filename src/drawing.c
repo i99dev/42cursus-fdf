@@ -6,7 +6,7 @@
 /*   By: oal-tena <oal-tena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 13:26:33 by oal-tena          #+#    #+#             */
-/*   Updated: 2022/01/06 16:36:38 by oal-tena         ###   ########.fr       */
+/*   Updated: 2022/01/06 17:27:18 by oal-tena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,29 @@ void	pix_put_img(t_fdf *fdf, int x, int y, int color)
 	float	dx;
 	float	dy;
 
-	dx = fdf->img_width / fdf->map_width;
-	dy = fdf->img_height / fdf->map_height;
+	dx = fdf->img_width / fdf->map_width + x;
+	dy = fdf->img_height / fdf->map_height + y;
 	pixel = fdf->img_data + (y * fdf->size_line) + (x * 4);
 	*pixel = color;
-	while (++x < fdf->img_width)
+	while (y < dy && y < fdf->img_height)
 	{
 		pixel = fdf->img_data + (y * fdf->size_line) + (x * 4);
-		*pixel = color;
+		pixel[0] = color;
+		pixel[1] = color >> 8;
+		pixel[2] = color >> 16;
+		while (x < dx && x < fdf->img_width)
+		{
+			pixel = fdf->img_data + (y * fdf->size_line) + (x * 4);
+			pixel[0] = color;
+			pixel[1] = color >> 8;
+			pixel[2] = color >> 16;
+			x++;
+		}
+		y++;
 	}
 }
+
+
 
 void	put_map_image(t_fdf *fdf)
 {
@@ -49,9 +62,9 @@ void	put_map_image(t_fdf *fdf)
 			if (fdf->map[y][x] == 0)
 				pix_put_img(fdf, x * dx, y * dy, 0xFFFFFF);
 			else if (fdf->map[y][x] < 0)
-				pix_put_img(fdf, x * dx, y * dy, 0x042FFF);
+				pix_put_img(fdf, x * dx, y * dy, 0xFFFFFF);
 			else if (fdf->map[y][x] > 0)
-				pix_put_img(fdf, x * dx, y * dy, 0xFF0000);
+				pix_put_img(fdf, x * dx, y * dy, 0xFF0404);
 			x++;
 		}
 		y++;
