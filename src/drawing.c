@@ -6,53 +6,54 @@
 /*   By: oal-tena <oal-tena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 13:26:33 by oal-tena          #+#    #+#             */
-/*   Updated: 2022/01/06 13:53:23 by oal-tena         ###   ########.fr       */
+/*   Updated: 2022/01/06 16:36:38 by oal-tena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
-
-void	put_map(t_fdf *fdf, int x, int y, int color)
-{
-	int		i;
-
-	i = (x * 4 * (fdf->img_width / fdf->map_width)) + \
-	(y * fdf->size_line * (fdf->img_height / fdf->map_height));
-	fdf->img_data[i] = color;
-	fdf->img_data[i + 1] = color >> 8;
-	fdf->img_data[i + 2] = color >> 16;
-	
-}
 
 //https://aurelienbrabant.fr/blog/pixel-drawing-with-the-minilibx
 
 void	pix_put_img(t_fdf *fdf, int x, int y, int color)
 {
 	char	*pixel;
+	float	dx;
+	float	dy;
 
+	dx = fdf->img_width / fdf->map_width;
+	dy = fdf->img_height / fdf->map_height;
 	pixel = fdf->img_data + (y * fdf->size_line) + (x * 4);
-	*(unsigned int*)pixel = color;
+	*pixel = color;
+	while (++x < fdf->img_width)
+	{
+		pixel = fdf->img_data + (y * fdf->size_line) + (x * 4);
+		*pixel = color;
+	}
 }
 
 void	put_map_image(t_fdf *fdf)
 {
-	int	i;
-	int	j;
+	int		y;
+	int		x;
+	float	dx;
+	float	dy;
 
-	i = 0;
-	while (i < fdf->map_height)
+	y = 0;
+	dx = fdf->img_width / fdf->map_width;
+	dy = fdf->img_height / fdf->map_height;
+	while (y < fdf->map_height)
 	{
-		j = 0;
-		while (j < fdf->map_width)
+		x = 0;
+		while (x < fdf->map_width)
 		{
-			if (fdf->map[i][j] == 0)
-				put_map(fdf, j, i, 0xFFFFFF);
-			else if (fdf->map[i][j] < 0)
-				put_map(fdf, j, i, 0x042FFF);
-			else if (fdf->map[i][j] > 0)
-				put_map(fdf, j, i, 0xFF0000);
-			j++;
+			if (fdf->map[y][x] == 0)
+				pix_put_img(fdf, x * dx, y * dy, 0xFFFFFF);
+			else if (fdf->map[y][x] < 0)
+				pix_put_img(fdf, x * dx, y * dy, 0x042FFF);
+			else if (fdf->map[y][x] > 0)
+				pix_put_img(fdf, x * dx, y * dy, 0xFF0000);
+			x++;
 		}
-		i++;
+		y++;
 	}
 }
