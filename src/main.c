@@ -14,8 +14,6 @@
 
 void	init_img(t_fdf *fdf)
 {
-	fdf->endian = 0;
-	fdf->bpp = 32;
 	fdf->img_width = 600;
 	fdf->img_height = 300;
 	fdf->size_line = fdf->map_width * 4;
@@ -23,7 +21,6 @@ void	init_img(t_fdf *fdf)
 	fdf->img_data = mlx_get_data_addr(fdf->img_ptr, &fdf->bpp, \
 	&fdf->size_line, &fdf->endian);
 }
-
 
 void	app_init(char *file_path, t_fdf *fdf)
 {
