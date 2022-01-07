@@ -82,6 +82,8 @@ typedef struct t_fdf
 	int			**map;
 	int			map_width;
 	int			map_height;
+    int			map_dx;
+    int			map_dy;
 	int			max_z;
 	int			min_z;
 	int			iso;
