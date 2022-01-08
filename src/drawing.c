@@ -6,7 +6,7 @@
 /*   By: oal-tena <oal-tena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 13:26:33 by oal-tena          #+#    #+#             */
-/*   Updated: 2022/01/08 09:54:30 by oal-tena         ###   ########.fr       */
+/*   Updated: 2022/01/08 10:21:49 by oal-tena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ void	pix_put_img(t_fdf *fdf, unsigned int x, unsigned int y, int color)
 	printf("(%d, %d)", x, y);
 	x = (x * fdf->map_dx) + fdf->move_x;
 	y = (y * fdf->map_dy) + fdf->move_y;
-	dx = (x - y) * cos(0.5);
-	dy = (x + y) * sin(0.5);
+	dx = (x - y) * cos(fdf->angle);
+	dy = (x + y) * sin(fdf->angle);
 	printf("(%d ,%d)\n", dx, dy);
 	if (dx > fdf->img_width || dy > fdf->img_height || dx < 0 || dy < 0)
 		return ;

@@ -26,6 +26,7 @@ SRC=  	src/main.c					\
 		src/drawing.c					\
 		tools/ft_get_next_line.c	\
 		tools/ft_hook.c				\
+		tools/ft_tools.c			\
 
 
 

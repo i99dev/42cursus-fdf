@@ -87,10 +87,11 @@ typedef struct t_fdf
 	int			max_z;
 	int			min_z;
 	int			iso;
-    int         angle;
+    double         angle;
 }				t_fdf;
 
 void	regsiter_hooks(t_fdf *fdf);
 void	ft_read_file(char *file_path, t_fdf *fdf);
 void	put_map_image(t_fdf *fdf);
+void	create_new_img(t_fdf *fdf);
 #endif
