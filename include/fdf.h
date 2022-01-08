@@ -72,8 +72,8 @@ typedef struct t_fdf
 	int			endian;
 	int			bpp;
 	int			width;
-    int         img_width;
-    int         img_height;
+	int         img_width;
+	int         img_height;
 	int			height;
 	float		zoom;
 	float		move_x;
@@ -82,16 +82,28 @@ typedef struct t_fdf
 	int			**map;
 	int			map_width;
 	int			map_height;
-    int			map_dx;
-    int			map_dy;
+	int			map_dx;
+	int			map_dy;
+	int			x0;
+	int			y0;
+	int			x1;
+	int			y1;
+	int			x;
+	int			y;
+	int			step_x;
+	int			step_y;
+	int			del_error;
 	int			max_z;
 	int			min_z;
+	int			map_x_size;
+	int			map_y_size;
 	int			iso;
-    double         angle;
+	double      angle;
 }				t_fdf;
 
 void	regsiter_hooks(t_fdf *fdf);
 void	ft_read_file(char *file_path, t_fdf *fdf);
 void	put_map_image(t_fdf *fdf);
 void	create_new_img(t_fdf *fdf);
+void	ft_drwa_line(t_fdf *fdf);
 #endif

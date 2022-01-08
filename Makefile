@@ -27,6 +27,7 @@ SRC=  	src/main.c					\
 		tools/ft_get_next_line.c	\
 		tools/ft_hook.c				\
 		tools/ft_tools.c			\
+		tools/ft_bresenham.c		\
 
 
 
