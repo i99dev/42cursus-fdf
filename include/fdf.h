@@ -87,6 +87,7 @@ typedef struct t_fdf
 	int			max_z;
 	int			min_z;
 	int			iso;
+    int         angle;
 }				t_fdf;
 
 void	regsiter_hooks(t_fdf *fdf);

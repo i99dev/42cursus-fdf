@@ -20,6 +20,9 @@ void	init_img(t_fdf *fdf)
 	fdf->img_ptr = mlx_new_image(fdf->mlx_ptr, fdf->img_width, fdf->img_height);
 	fdf->img_data = mlx_get_data_addr(fdf->img_ptr, &fdf->bpp, \
 	&fdf->size_line, &fdf->endian);
+	fdf->angle = 0.8;
+	fdf->move_x = 0;
+	fdf->move_y = 0;
 }
 
 void	app_init(char *file_path, t_fdf *fdf)

@@ -6,11 +6,13 @@
 /*   By: oal-tena <oal-tena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 12:40:28 by oal-tena          #+#    #+#             */
-/*   Updated: 2022/01/03 13:10:17 by oal-tena         ###   ########.fr       */
+/*   Updated: 2022/01/08 09:59:42 by oal-tena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
+
+
 
 int	close_windowa(int key, t_fdf *fdf)
 {
@@ -18,7 +20,16 @@ int	close_windowa(int key, t_fdf *fdf)
 	{
 		mlx_destroy_window(fdf->mlx_ptr, fdf->win_ptr);
 	}
-	exit(0);
+	else if (key == K_AR_D)
+	{
+		fdf->move_y += 1;
+	}
+	else if (key == K_AR_U)
+	{
+		fdf->move_y -= 1;
+	}
+	put_map_image(fdf);
+
 }
 
 void	regsiter_hooks(t_fdf *fdf)

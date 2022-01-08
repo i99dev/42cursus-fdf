@@ -6,7 +6,7 @@
 /*   By: oal-tena <oal-tena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 13:10:57 by oal-tena          #+#    #+#             */
-/*   Updated: 2022/01/07 12:11:38 by oal-tena         ###   ########.fr       */
+/*   Updated: 2022/01/08 04:43:15 by oal-tena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	*convert_to_matrix(char *line)
 		matrix[i] = ft_atoi(split[i]);
 		i++;
 	}
-	matrix[i] = 0;
+	matrix[i] = '\0';
 	return (matrix);
 }
 
