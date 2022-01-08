@@ -14,7 +14,7 @@
 
 void	init_img(t_fdf *fdf)
 {
-	fdf->angle = 0.1;
+	fdf->angle = 0.5;
 	fdf->move_x = 0;
 	fdf->move_y = 0;
 	fdf->img_width = 600;

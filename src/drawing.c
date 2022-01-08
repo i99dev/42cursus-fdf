@@ -6,27 +6,51 @@
 /*   By: oal-tena <oal-tena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 13:26:33 by oal-tena          #+#    #+#             */
-/*   Updated: 2022/01/08 10:21:49 by oal-tena         ###   ########.fr       */
+/*   Updated: 2022/01/08 12:49:59 by oal-tena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
+void	ft_put_pixel(t_fdf *fdf, int x, int y, int color)
+{
+	char	*pixel;
+
+	pixel = fdf->img_data + ((y) * fdf->size_line) + (x * 4);
+	pixel[0] = color;
+	pixel[1] = color >> 8;
+	pixel[2] = color >> 16;
+}
+
+void	ft_check_merge(t_fdf *fdf, int x, int y, int color)
+{
+	if (x < 0 || y < 0 || x >= fdf->img_width || y >= fdf->img_height)
+		return ;
+	ft_put_pixel(fdf, x, y, color);
+}
 
 void	down_line(t_fdf *fdf, int x, int y, int color)
 {
 	float	dy;
 	char	*pixel;
 	int		is_last;
+	int		p;
 
 	is_last = fdf->map_dy * fdf->map_height;
 	dy = fdf->map_dy + y;
+	p = 2 * fdf->map_dx - fdf->map_dy;
 	while (y < dy && dy < is_last)
 	{
-		pixel = fdf->img_data + (y * fdf->size_line) + (x * 4);
-		pixel[0] = color;
-		pixel[1] = color >> 8;
-		pixel[2] = color >> 16;
+		if (p >= 0)
+		{
+			p += 2 * fdf->map_dx;
+		}
+		else
+		{
+			p += 2 * fdf->map_dx - 2 * fdf->map_dy;
+			x--;
+		}
+		ft_check_merge(fdf, x, y, color);
 		y++;
 	}
 }
@@ -36,15 +60,13 @@ void	left_line(t_fdf *fdf, int x, int y, int color)
 	float	dx;
 	char	*pixel;
 	int		is_last;
+	int		p;
 
 	is_last = fdf->map_dx * fdf->map_width - 1;
 	dx = fdf->map_dx + x;
 	while (x < dx && dx < is_last)
 	{
-		pixel = fdf->img_data + ((y) * fdf->size_line) + (x * 4);
-		pixel[0] = color;
-		pixel[1] = color >> 8;
-		pixel[2] = color >> 16;
+		ft_check_merge(fdf, x, y, color);
 		x++;
 	}
 }
@@ -52,21 +74,17 @@ void	left_line(t_fdf *fdf, int x, int y, int color)
 void	pix_put_img(t_fdf *fdf, unsigned int x, unsigned int y, int color)
 {
 	char					*pixel;
-	unsigned int			dx;
-	unsigned int			dy;
+	unsigned int			px;
+	unsigned int			py;
 
-	printf("(%d, %d)", x, y);
 	x = (x * fdf->map_dx) + fdf->move_x;
 	y = (y * fdf->map_dy) + fdf->move_y;
-	dx = (x - y) * cos(fdf->angle);
-	dy = (x + y) * sin(fdf->angle);
-	printf("(%d ,%d)\n", dx, dy);
-	if (dx > fdf->img_width || dy > fdf->img_height || dx < 0 || dy < 0)
+	px = (x - y) * cos(fdf->angle);
+	py = (x + y) * sin(fdf->angle);
+	if (px > fdf->img_width || py > fdf->img_height || px < 0 || py < 0)
 		return ;
-	pixel = fdf->img_data + (dy * fdf->size_line) + (dx * 4);
-	*pixel = color;
-	left_line(fdf, dx, dy, color);
-	down_line(fdf, dx, dy, color);
+	left_line(fdf, px, py, color);
+	down_line(fdf, px, py, color);
 }
 
 void	put_map_image(t_fdf *fdf)
