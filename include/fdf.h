@@ -59,6 +59,11 @@
 # define SCREEN_WIDTH 1080
 # define SCREEN_HEIGHT 600
 
+# define P_WIDTH 1280
+# define P_HEIGHT 720
+# define XY_ZOOM 0.005
+# define Z_ZOOM 0.005
+
 typedef struct t_fdf
 {
 	void		*mlx_ptr;

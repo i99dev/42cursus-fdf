@@ -6,7 +6,7 @@
 /*   By: oal-tena <oal-tena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 13:26:33 by oal-tena          #+#    #+#             */
-/*   Updated: 2022/01/09 14:18:36 by oal-tena         ###   ########.fr       */
+/*   Updated: 2022/01/09 15:14:40 by oal-tena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,10 @@ void	rotate_z_axis(t_fdf *fdf, int *x, int *y, double z_axis)
 }
 void	shift_and_centeralize_map(t_fdf *fdf)
 {
-	fdf->x0 = fdf->x0 + fdf->x_shift + (fdf->img_width / 2.5);
-	fdf->x1 = fdf->x1 + fdf->x_shift + (fdf->img_width / 2.5);
-	fdf->y0 = fdf->y0 + fdf->y_shift + (fdf->height / 4);
-	fdf->y1 = fdf->y1 + fdf->y_shift + (fdf->img_height / 4);
+	fdf->x0 = fdf->x0 + fdf->x_shift + (P_WIDTH / 2.5);
+	fdf->x1 = fdf->x1 + fdf->x_shift + (P_WIDTH / 2.5);
+	fdf->y0 = fdf->y0 + fdf->y_shift + (P_HEIGHT / 4);
+	fdf->y1 = fdf->y1 + fdf->y_shift + (P_HEIGHT / 4);
 }
 void	adjust_zoom(t_fdf *fdf, int normalize)
 {
@@ -107,8 +107,8 @@ int		ft_normalize(t_fdf *fdf)
 	int height;
 	int width;
 
-	height = fdf->img_height / fdf->map_height;
-	width = fdf->img_width / fdf->map_width;
+	height = P_HEIGHT / fdf->map_height;
+	width = P_WIDTH / fdf->map_width;
 	if (height < width)
 		return (height);
 	else if (width <= height)
@@ -178,12 +178,12 @@ void	put_map_image(t_fdf *fdf)
 {
 	while (fdf->y <= fdf->map_height)
 	{
+		fdf->x = 0;
 		while (fdf->x <= fdf->map_width)
 		{
 			render_map(fdf);
 			fdf->x++;
 		}
-		fdf->x = 0;
 		fdf->y++;
 	}
 	fdf->x = 0;

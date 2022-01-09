@@ -12,7 +12,7 @@
 
 #include "../include/fdf.h"
 
-void	init_img(t_fdf *fdf)
+void	init(t_fdf *fdf)
 {
 	fdf->x = 0;
 	fdf->y = 0;
@@ -20,16 +20,16 @@ void	init_img(t_fdf *fdf)
 	fdf->y0 = 0;
 	fdf->x1 = fdf->x0;
 	fdf->y1 = fdf->y0;
-	fdf->camera = 0;
-	fdf->x_shift = 0;
-	fdf->y_shift = 0;
+	fdf->camera = 1;
+	fdf->x_shift = -150;
+	fdf->y_shift = 150;
 	fdf->camera = 0;
 	fdf->degree_angle = 30;
-	fdf->xy_zoom = 0.5;
-	fdf->z_zoom = 0.03;
+	fdf->xy_zoom = 0.3;
+	fdf->z_zoom = 0.05;
 	fdf->x_axis = 0;
 	fdf->y_axis = 0;
-	fdf->z_axis = 0;
+	fdf->z_axis = 5;
 	fdf->color = 0xff000;
 	create_new_img(fdf);
 }
@@ -40,9 +40,9 @@ void	app_init(char *file_path, t_fdf *fdf)
 	fdf->win_ptr = mlx_new_window(fdf->mlx_ptr, \
 	SCREEN_WIDTH, SCREEN_HEIGHT, "FDF");
 	ft_read_file(file_path, fdf);
-	init_img(fdf);
+	init(fdf);
 	put_map_image(fdf);
-	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr, fdf->img_ptr, 300, 50);
+	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr, fdf->img_ptr, 200, 50);
 	regsiter_hooks(fdf);
 	mlx_loop(fdf->mlx_ptr);
 }

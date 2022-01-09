@@ -6,7 +6,7 @@
 /*   By: oal-tena <oal-tena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 13:30:26 by oal-tena          #+#    #+#             */
-/*   Updated: 2022/01/09 14:15:26 by oal-tena         ###   ########.fr       */
+/*   Updated: 2022/01/09 15:17:42 by oal-tena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	calc_delta_xy(t_fdf *fdf)
 	fdf->map_dy = fdf->y1 - fdf->y0;
 }
 
-void	ft_x_line(t_fdf *fdf)
+void	plot_low_line(t_fdf *fdf)
 {
 	size_t	color;
 
@@ -68,7 +68,7 @@ void	ft_x_line(t_fdf *fdf)
 	}
 }
 
-void	ft_y_line(t_fdf *fdf)
+void	plot_high_line(t_fdf *fdf)
 {
 	size_t	color;
 
@@ -100,24 +100,24 @@ void	ft_drwa_line(t_fdf *fdf)
 {
 	if (abs(fdf->y1 - fdf->y0) < abs(fdf->x1 - fdf->x0))
 	{
-		if (fdf->y0 > fdf->y1)
-		{
-			ft_swap(&fdf->x0, &fdf->x1);
-			ft_swap(&fdf->y0, &fdf->y1);
-			ft_y_line(fdf);
-		}
-		else
-			ft_y_line(fdf);
-	}
-	else
-	{
 		if (fdf->x0 > fdf->x1)
 		{
 			ft_swap(&fdf->x0, &fdf->x1);
 			ft_swap(&fdf->y0, &fdf->y1);
-			ft_x_line(fdf);
+			plot_low_line(fdf);
 		}
 		else
-			ft_x_line(fdf);
+			plot_low_line(fdf);
+	}
+	else
+	{
+		if (fdf->y0 > fdf->y1)
+		{
+			ft_swap(&fdf->x0, &fdf->x1);
+			ft_swap(&fdf->y0, &fdf->y1);
+			plot_high_line(fdf);
+		}
+		else
+			plot_high_line(fdf);
 	}
 }
