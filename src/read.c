@@ -6,7 +6,7 @@
 /*   By: oal-tena <oal-tena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 13:10:57 by oal-tena          #+#    #+#             */
-/*   Updated: 2022/01/08 04:43:15 by oal-tena         ###   ########.fr       */
+/*   Updated: 2022/01/09 14:16:57 by oal-tena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	*convert_to_matrix(char *line)
 		matrix[i] = ft_atoi(split[i]);
 		i++;
 	}
-	matrix[i] = '\0';
+	matrix[i] = 0;
 	return (matrix);
 }
 
@@ -60,7 +60,7 @@ void	ft_read_file(char *file_path, t_fdf *fdf)
 	int		i;
 
 	i = 0;
-	fdf->map_height = 0;
+	fdf->map_height = -1;
 	fd = open(file_path, O_RDONLY);
 	if (fd == -1)
 		ft_putstr_fd("Error can't read file", 1);

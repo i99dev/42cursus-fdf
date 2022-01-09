@@ -97,8 +97,20 @@ typedef struct t_fdf
 	int			min_z;
 	int			map_x_size;
 	int			map_y_size;
+    double		xy_zoom;
 	int			iso;
 	double      angle;
+    int         camera;
+    int			x_shift;
+	int			y_shift;
+    double		z_zoom;
+    int			z1;
+    int			z0;
+    double		x_axis;
+	double		y_axis;
+	double		z_axis;
+    double		degree_angle;
+
 }				t_fdf;
 
 void	regsiter_hooks(t_fdf *fdf);

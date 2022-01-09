@@ -14,12 +14,23 @@
 
 void	init_img(t_fdf *fdf)
 {
-	fdf->angle = 0.1;
-	fdf->move_x = 0;
-	fdf->move_y = 0;
-	fdf->img_width = 600;
-	fdf->img_height = 300;
-    fdf->color = 0xff000;
+	fdf->x = 0;
+	fdf->y = 0;
+	fdf->x0 = 0;
+	fdf->y0 = 0;
+	fdf->x1 = fdf->x0;
+	fdf->y1 = fdf->y0;
+	fdf->camera = 0;
+	fdf->x_shift = 0;
+	fdf->y_shift = 0;
+	fdf->camera = 0;
+	fdf->degree_angle = 30;
+	fdf->xy_zoom = 0.5;
+	fdf->z_zoom = 0.03;
+	fdf->x_axis = 0;
+	fdf->y_axis = 0;
+	fdf->z_axis = 0;
+	fdf->color = 0xff000;
 	create_new_img(fdf);
 }
 

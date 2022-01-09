@@ -6,7 +6,7 @@
 /*   By: oal-tena <oal-tena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 13:30:26 by oal-tena          #+#    #+#             */
-/*   Updated: 2022/01/08 16:01:03 by oal-tena         ###   ########.fr       */
+/*   Updated: 2022/01/09 14:15:26 by oal-tena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	ft_put_pixel_image(t_fdf *fdf, int x, int y, int color)
 {
 	char	*pixel;
 
-	// if (fdf->x0 > fdf->x1 || fdf->y0 > fdf->y1 || fdf->x1 > fdf->map_x_size || fdf->y1 > fdf->map_y_size)
-	// 	return ;
+	if (x > fdf->img_width || y > fdf->img_height || x < 0 || y < 0)
+		return ;
 	pixel = fdf->img_data + (y * fdf->size_line) + (x * 4);
 	pixel[0] = color;
 	pixel[1] = color >> 8;
@@ -45,6 +45,8 @@ void	ft_x_line(t_fdf *fdf)
 	size_t	color;
 
 	color = fdf->color;
+    if (fdf->map[fdf->y][fdf->x] == 0)
+        color = 0xFFFFFF;
 	calc_delta_xy(fdf);
 	fdf->step_x = 1;
 	if (fdf->map_dy < 0)
@@ -71,6 +73,8 @@ void	ft_y_line(t_fdf *fdf)
 	size_t	color;
 
 	color = fdf->color;
+    if (fdf->map[fdf->y][fdf->x] == 0)
+        color = 0xFFFFFF;
 	calc_delta_xy(fdf);
 	fdf->step_x = 1;
 	if (fdf->map_dx < 0)
