@@ -25,9 +25,12 @@ SRC=  	src/main.c					\
 		src/read.c					\
 		src/drawing.c					\
 		tools/ft_get_next_line.c	\
-		tools/ft_hook.c				\
 		tools/ft_tools.c			\
 		tools/ft_bresenham.c		\
+		tools/ft_camera.c			\
+		tools/ft_handle_line.c		\
+		tools/ft_rotate.c			\
+		tools/ft_put_pixel.c		\
 
 
 

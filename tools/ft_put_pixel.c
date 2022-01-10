@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hook.c                                          :+:      :+:    :+:   */
+/*   ft_put_pixel.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oal-tena <oal-tena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 02:24:00 by oal-tena          #+#    #+#             */
-/*   Updated: 2021/11/24 03:36:10 by oal-tena         ###   ########.fr       */
+/*   Created: 2022/01/10 06:09:12 by oal-tena          #+#    #+#             */
+/*   Updated: 2022/01/10 06:09:25 by oal-tena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
-int	close_window(int keycode, t_fdf *fdf)
+void	ft_put_pixel_image(t_fdf *fdf, int x, int y, int color)
 {
-	if (keycode == K_ESC)
-	{
-		ft_putstr_fd(WARNING"Goodbye.\n", 1);
-		mlx_destroy_window(fdf->mlx_ptr, fdf->win_ptr);
-		exit(0);
-	}
-	return (0);
-}
+	char	*pixel;
 
-int	rezise_window(int keycode, t_fdf fdf);
+	if (x > fdf->img_width || y > fdf->img_height || x < 0 || y < 0)
+		return ;
+	pixel = fdf->img_data + (y * fdf->size_line) + (x * 4);
+	pixel[0] = color;
+	pixel[1] = color >> 8;
+	pixel[2] = color >> 16;
+}

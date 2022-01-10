@@ -6,7 +6,7 @@
 /*   By: oal-tena <oal-tena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 13:10:57 by oal-tena          #+#    #+#             */
-/*   Updated: 2022/01/09 14:16:57 by oal-tena         ###   ########.fr       */
+/*   Updated: 2022/01/10 05:50:23 by oal-tena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,25 @@ int	*convert_to_matrix(char *line)
 	return (matrix);
 }
 
+void	check_w_h(int fd, t_fdf *fdf)
+{
+	int		i;
+	char	*line;
+
+	i = 0;
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (line == NULL)
+			break ;
+		if (i == 0)
+			fdf->map_width = ft_strlen_c(line);
+		fdf->map_height++;
+		i++;
+	}
+	close(fd);
+}
+
 void	ft_read_file(char *file_path, t_fdf *fdf)
 {
 	char	*line;
@@ -64,16 +83,7 @@ void	ft_read_file(char *file_path, t_fdf *fdf)
 	fd = open(file_path, O_RDONLY);
 	if (fd == -1)
 		ft_putstr_fd("Error can't read file", 1);
-	while (1)
-	{
-		line = get_next_line(fd);
-		if (line == NULL)
-			break ;
-		if (i == 0)
-			fdf->map_width = ft_strlen_c(line);
-		fdf->map_height++;
-		i++;
-	}
+	check_w_h(fd, fdf);
 	close(fd);
 	fdf->map = (int **)malloc(sizeof(int *) * fdf->map_height);
 	fd = open(file_path, O_RDONLY);

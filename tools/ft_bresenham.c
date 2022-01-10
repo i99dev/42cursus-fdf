@@ -6,7 +6,7 @@
 /*   By: oal-tena <oal-tena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 13:30:26 by oal-tena          #+#    #+#             */
-/*   Updated: 2022/01/09 15:17:42 by oal-tena         ###   ########.fr       */
+/*   Updated: 2022/01/10 06:10:38 by oal-tena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,6 @@ int	ft_swap(int *a, int *b)
 	return (0);
 }
 
-void	ft_put_pixel_image(t_fdf *fdf, int x, int y, int color)
-{
-	char	*pixel;
-
-	if (x > fdf->img_width || y > fdf->img_height || x < 0 || y < 0)
-		return ;
-	pixel = fdf->img_data + (y * fdf->size_line) + (x * 4);
-	pixel[0] = color;
-	pixel[1] = color >> 8;
-	pixel[2] = color >> 16;
-}
-
 void	calc_delta_xy(t_fdf *fdf)
 {
 	fdf->map_dx = fdf->x1 - fdf->x0;
@@ -45,10 +33,10 @@ void	plot_low_line(t_fdf *fdf)
 	size_t	color;
 
 	color = fdf->color;
-    if (fdf->map[fdf->y][fdf->x] == 0)
-        color = 0xFFFFFF;
+	if (fdf->map[fdf->y][fdf->x] == 0)
+		color = 0xFFFFFF;
 	calc_delta_xy(fdf);
-	fdf->step_x = 1;
+	fdf->step_y = 1;
 	if (fdf->map_dy < 0)
 	{
 		fdf->step_y = -1;
@@ -73,8 +61,8 @@ void	plot_high_line(t_fdf *fdf)
 	size_t	color;
 
 	color = fdf->color;
-    if (fdf->map[fdf->y][fdf->x] == 0)
-        color = 0xFFFFFF;
+	if (fdf->map[fdf->y][fdf->x] == 0)
+		color = 0xFFFFFF;
 	calc_delta_xy(fdf);
 	fdf->step_x = 1;
 	if (fdf->map_dx < 0)
