@@ -6,13 +6,13 @@
 /*   By: oal-tena <oal-tena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 12:40:28 by oal-tena          #+#    #+#             */
-/*   Updated: 2022/02/07 12:40:03 by oal-tena         ###   ########.fr       */
+/*   Updated: 2022/02/07 13:48:41 by oal-tena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
-int	hook(t_fdf *fdf, int key)
+int	hook(int key,t_fdf *fdf)
 {
 	if (key == ESCAPE_KEY)
 		mlx_destroy_window(fdf->mlx_ptr, fdf->win_ptr);
