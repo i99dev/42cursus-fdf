@@ -28,7 +28,7 @@ void	init(t_fdf *fdf)
 	fdf->x1 = fdf->x0;
 	fdf->y1 = fdf->y0;
 	fdf->x_shift = -250;
-	fdf->y_shift = 0;
+	fdf->y_shift = -100;
 	fdf->camera = 1;
 	fdf->degree_angle = 50;
 	fdf->xy_zoom = 0.4;
@@ -37,6 +37,8 @@ void	init(t_fdf *fdf)
 	fdf->y_axis = 0;
 	fdf->z_axis = 0;
 	fdf->color = 0xff000;
+    fdf->img_width= 800;
+    fdf->img_height= 400;
 	create_new_img(fdf);
 }
 
