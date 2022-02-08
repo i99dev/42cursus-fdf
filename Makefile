@@ -20,13 +20,18 @@ RESET		=	\e[0m
 _SUCCESS	=	[$(GREEN)SUCCESS$(RESET)]
 _INFO		=	[$(YELLOW)INFO$(RESET)]
 
-SRC=  	src/main.c				\
-		src/ft_window.c		\
-		tools/get_next_line.c	\
-		tools/ft_hook.c			\
-		tools/utils.c		\
-		src/ft_fdf.c		\
-		tools/u_win_design.c
+SRC=  	src/main.c					\
+		src/hook.c					\
+		src/read.c					\
+		src/drawing.c					\
+		tools/ft_get_next_line.c	\
+		tools/ft_tools.c			\
+		tools/ft_bresenham.c		\
+		tools/ft_camera.c			\
+		tools/ft_handle_line.c		\
+		tools/ft_rotate.c			\
+		tools/ft_put_pixel.c		\
+
 
 
 # path folodr

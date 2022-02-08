@@ -1,26 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hook.c                                          :+:      :+:    :+:   */
+/*   drawing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oal-tena <oal-tena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 02:24:00 by oal-tena          #+#    #+#             */
-/*   Updated: 2021/11/24 03:36:10 by oal-tena         ###   ########.fr       */
+/*   Created: 2022/01/04 13:26:33 by oal-tena          #+#    #+#             */
+/*   Updated: 2022/02/08 03:44:00 by oal-tena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
-int	close_window(int keycode, t_fdf *fdf)
+void	render_map(t_fdf *fdf)
 {
-	if (keycode == K_ESC)
+	if (fdf->camera == 0 || fdf->camera == 1)
 	{
-		ft_putstr_fd(WARNING"Goodbye.\n", 1);
-		mlx_destroy_window(fdf->mlx_ptr, fdf->win_ptr);
-		exit(0);
+		if (fdf->y < fdf->map_height)
+			ft_y(fdf);
+		ft_x(fdf);
 	}
-	return (0);
 }
 
-int	rezise_window(int keycode, t_fdf fdf);
+void	put_map_image(t_fdf *fdf)
+{
+	while (fdf->y <= fdf->map_height)
+	{
+		fdf->x = 0;
+		while (fdf->x <= fdf->map_width)
+		{
+			render_map(fdf);
+			fdf->x++;
+		}
+		fdf->y++;
+	}
+	fdf->x = 0;
+	fdf->y = 0;
+	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr, fdf->img_ptr, 300, 50);
+}

@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   moues.h                                            :+:      :+:    :+:   */
+/*   ft_put_pixel.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oal-tena <oal-tena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/22 06:16:47 by oal-tena          #+#    #+#             */
-/*   Updated: 2021/11/22 11:27:06 by oal-tena         ###   ########.fr       */
+/*   Created: 2022/01/10 06:09:12 by oal-tena          #+#    #+#             */
+/*   Updated: 2022/01/10 06:09:25 by oal-tena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MOUES_H
-# define MOUES_H
+#include "../include/fdf.h"
 
-# include "fdf.h"
-
-/**
- * @brief  mouse event handler function prototype
- * @param  x
- * @param  y
- * 
- */
-typedef struct s_moues
+void	ft_put_pixel_image(t_fdf *fdf, int x, int y, int color)
 {
-	int			x;
-	int			y;
-}				t_moues;
+	char	*pixel;
 
-#endif
+	if (x > fdf->img_width || y > fdf->img_height || x < 0 || y < 0)
+		return ;
+	pixel = fdf->img_data + (y * fdf->size_line) + (x * 4);
+	pixel[0] = color;
+	pixel[1] = color >> 8;
+	pixel[2] = color >> 16;
+}
