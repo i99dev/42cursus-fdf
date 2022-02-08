@@ -37,8 +37,8 @@ void	init(t_fdf *fdf)
 	fdf->y_axis = 0;
 	fdf->z_axis = 0;
 	fdf->color = 0xff000;
-    fdf->img_width= 800;
-    fdf->img_height= 400;
+	fdf->img_width = 800;
+	fdf->img_height = 400;
 	create_new_img(fdf);
 }
 

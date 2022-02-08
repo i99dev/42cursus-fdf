@@ -6,7 +6,7 @@
 /*   By: oal-tena <oal-tena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 13:26:33 by oal-tena          #+#    #+#             */
-/*   Updated: 2022/01/10 06:43:31 by oal-tena         ###   ########.fr       */
+/*   Updated: 2022/02/08 03:44:00 by oal-tena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	render_map(t_fdf *fdf)
 
 void	put_map_image(t_fdf *fdf)
 {
-
 	while (fdf->y <= fdf->map_height)
 	{
 		fdf->x = 0;
@@ -37,5 +36,5 @@ void	put_map_image(t_fdf *fdf)
 	}
 	fdf->x = 0;
 	fdf->y = 0;
-    mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr, fdf->img_ptr, 300, 50);
+	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr, fdf->img_ptr, 300, 50);
 }
